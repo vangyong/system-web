@@ -1,122 +1,205 @@
-# vue-element-admin-tpl
+<p align="center">
+  <img width="320" src="https://wpimg.wallstcn.com/ecc53a42-d79b-42e2-8852-5126b810a4c8.svg">
+</p>
 
-基于vue + element-ui开发的后端管理系统模板。
+<p align="center">
+  <a href="https://github.com/vuejs/vue">
+    <img src="https://img.shields.io/badge/vue-2.5.17-brightgreen.svg" alt="vue">
+  </a>
+  <a href="https://github.com/ElemeFE/element">
+    <img src="https://img.shields.io/badge/element--ui-2.4.6-brightgreen.svg" alt="element-ui">
+  </a>
+  <a href="https://travis-ci.org/PanJiaChen/vue-element-admin" rel="nofollow">
+    <img src="https://travis-ci.org/PanJiaChen/vue-element-admin.svg?branch=master" alt="Build Status">
+  </a>
+  <a href="https://github.com/PanJiaChen/vue-element-admin/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
+  </a>
+  <a href="https://github.com/PanJiaChen/vue-element-admin/releases">
+    <img src="https://img.shields.io/github/release/PanJiaChen/vue-element-admin.svg" alt="GitHub release">
+  </a>
+  <a href="https://gitter.im/vue-element-admin/discuss">
+    <img src="https://badges.gitter.im/Join%20Chat.svg" alt="gitter">
+  </a>
+  <a href="https://panjiachen.github.io/vue-element-admin-site/donate">
+    <img src="https://img.shields.io/badge/%24-donate-ff69b4.svg" alt="donate">
+  </a>
+</p>
 
-+ vue
-+ vue-router
-+ axios
-+ element-ui
-+ nprogress
-+ 使用了 `FontAwesome 4.7.0` 的图标
+English | [简体中文](./README.zh-CN.md)
 
+## Introduction
 
+[vue-element-admin](http://panjiachen.github.io/vue-element-admin) is a front-end management background integration solution. It based on [vue](https://github.com/vuejs/vue) and use the UI Toolkit [element](https://github.com/ElemeFE/element).
 
-> `src/m` 目录下收藏了些本人工作时开发的一些组件，欢迎使用与提建议；使用方法请看对应的README.md说明文档。
+It is a magical vue admin based on the newest development stack of vue, built-in i18n solution, typical templates for enterprise applications, lots of awesome features. It helps you build a large complex Single-Page Applications. I believe whatever your needs are, this project will help you.
 
-> 注：布局采用了 `display:flex` 实现，在IE上可能会出现一些不愉快的事情。
+- [Preview](http://panjiachen.github.io/vue-element-admin)
 
+- [Documentation](https://panjiachen.github.io/vue-element-admin-site/)
 
-## 实现组件
+- [Gitter](https://gitter.im/vue-element-admin/discuss)
 
-+ [按钮组件](src/m/button)
-+ [多选框](src/m/checkbox)
-+ [switch](src/m/switch)
-+ [输入框](src/m/input)
-+ [导航](src/m/navbar)
-+ [dropdown](src/m/dropdown)
-+ [响应式布局](src/m/container)
-+ [加载等待](src/m/loading)
-+ [提示](src/m/alert)
-+ [回到到顶部](src/m/back-top)
-+ [盒子](src/m/box)
-+ [列表组](src/m/list-group)
-+ [虚拟键盘（中/英）](src/m/keyboard)
-+ [虚拟数字键盘](src/m/number-keyboard)
+- [Wiki](https://github.com/PanJiaChen/vue-element-admin/wiki)
 
+- [Donate](https://panjiachen.github.io/vue-element-admin-site/donate/)
 
-## 页面
+- [Gitee](https://panjiachen.gitee.io/vue-element-admin/) 国内用户可访问该地址在线预览
 
-+ [登录](http://vadmin.lanyueos.com/login)
-+ [注册](http://vadmin.lanyueos.com/register)
-+ [404](http://vadmin.lanyueos.com/404)
-+ [500](http://vadmin.lanyueos.com/500)
+**This project is positioned as a background integration solution and is not suitable for secondary development as a basic template.**
 
-+ [cnode](http://vadmin.lanyueos.com/cnode)
+- Base template recommends using: [vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)
+- Desktop: [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
+- Typescript: [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) (Credits: [@Armour](https://github.com/Armour))
 
+**This project does not support low version browsers (e.g. IE). Please add polyfill yourself if you need them.**
 
-## 截图
+**Note: This project uses element-ui@2.3.0+ version, so the minimum compatible vue@2.5.0+**
 
-![截图](2018-02-08_231542.png)
+**Start using `webpack4` from `v3.8.0`. If you still want to continue using `webpack3`, please use this branch [webpack3](https://github.com/PanJiaChen/vue-element-admin/tree/webpack3)**
 
-![截图](20180117171004.png)
+## Preparation
 
-![截图](20180117170917.png)
+You need to install [node](http://nodejs.org/) and [git](https://git-scm.com/) locally. The project is based on [ES2015+](http://es6.ruanyifeng.com/), [vue](https://cn.vuejs.org/index.html), [vuex](https://vuex.vuejs.org/zh-cn/), [vue-router](https://router.vuejs.org/zh-cn/), [axios](https://github.com/axios/axios) and [element-ui](https://github.com/ElemeFE/element), all request data is simulated using [Mock.js](https://github.com/nuysoft/Mock).
+Understanding and learning this knowledge in advance will greatly help the use of this project.
 
+---
 
-## 关于打包
+ <p align="center">
+  <img width="900" src="https://wpimg.wallstcn.com/a5894c1b-f6af-456e-82df-1151da0839bf.png">
+</p>
 
-
-对于打包，如果你使用git管理，推荐使用 `npm run publish` 命令进行打包，这样的的话打包前会执行更新 `package.json` 中的version字段；
-打包时会挂载 `APP_INFO` 对象到 `window` 对象上，在vue组件中可以直接 `window.APP_INFO` 访问版本信息。
-
-**window.APP_INFO**
-
-```js
-// window.APP_INFO对象大致内容
-
-{
-  projectName: pkg.name,
-  version: pkg.version,
-  description: pkg.description,
-  author: pkg.author,
-  appName: pkg.app && pkg.app.name || pkg.appName,
-  dependencies: pkg.dependencies,
-  engines: pkg.engines,
-  license: pkg.license,
-
-  // 如果是npm run publish打包会存在下面两个字段
-  // 打包时间
-  date: '',
-  // 本次打包MD5
-  md5: ''
-}
+## Features
 
 ```
-> 为什这么做？
-> 方便知道谁，什么时候打的包
+- Login / Logout
 
+- Permission Authentication
+  - Page permission
+  - Directive permission
+  - Two-step login
 
-## 案例
+- Multi-environment build
+  - dev sit stage prod
 
-1、[**浙中牛牛**（预览版）](http://www.lanyueos.com:3003) 账号：admin 密码：123456 （请不要乱改数据）
+- Global Features
+  - I18n
+  - Multiple dynamic themes
+  - Dynamic sidebar (supports multi-level routing)
+  - Dynamic breadcrumb
+  - Tags-view(Tab page Support right-click operation)
+  - Svg Sprite
+  - Mock data
+  - Screenfull
+  - Responsive Sidebar
 
-![浙中牛牛 预览版](20180117175701.png)
+- Editor
+  - Rich Text Editor
+  - Markdown Editor
+  - JSON Editor
 
+- Excel
+  - Export Excel
+  - Export zip
+  - Upload Excel
+  - Visualization Excel
 
+- Table
+  - Dynamic Table
+  - Drag And Drop Table
+  - Tree Table
+  - Inline Edit Table
 
-## Build Setup
+- Error Page
+  - 401
+  - 404
 
-``` bash
-# install dependencies
+- Components
+  - Avatar Upload
+  - Back To Top
+  - Drag Dialog
+  - Drag Kanban
+  - Drag List
+  - SplitPane
+  - Dropzone
+  - Sticky
+  - CountTo
+
+- Advanced Example
+- Error Log
+- Dashboard
+- Guide Page
+- ECharts
+- Clipboard
+- Markdown to html
+```
+
+## Getting started
+
+```bash
+# clone the project
+git clone https://github.com/PanJiaChen/vue-element-admin.git
+
+# install dependency
 npm install
 
-# serve with hot reload at localhost:8080
+# develop
 npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+This will automatically open http://localhost:9527.
+
+## Build
+
+```bash
+# build for test environment
+npm run build:sit
+
+# build for production environment
+npm run build:prod
+```
+
+## Advanced
+
+```bash
+# --report to build with bundle size analytics
+npm run build:prod --report
+
+# --generate a bundle size analytics. default: bundle-report.html
+npm run build:prod --generate_report
+
+# --preview to start a server in local to preview
+npm run build:prod --preview
+
+# lint code
+npm run lint
+
+# auto fix
+npm run lint -- --fix
+```
+
+Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/guide/essentials/deploy.html) for more information
+
+## Changelog
+
+Detailed changes for each release are documented in the [release notes](https://github.com/PanJiaChen/vue-element-admin/releases).
+
+## Online Demo
+
+[Preview](http://panjiachen.github.io/vue-element-admin)
+
+## Donate
+
+If you find this project useful, you can buy author a glass of juice :tropical_drink:
+
+![donate](https://wpimg.wallstcn.com/bd273f0d-83a0-4ef2-92e1-9ac8ed3746b9.png)
+
+[Paypal Me](https://www.paypal.me/panfree23)
+
+[Buy me a coffee](https://www.buymeacoffee.com/Pan)
+
+## License
+
+[MIT](https://github.com/PanJiaChen/vue-element-admin/blob/master/LICENSE)
+
+Copyright (c) 2017-present PanJiaChen

@@ -1,6 +1,5 @@
-'use strict'
-var version = require('./version')
 module.exports = {
   NODE_ENV: '"production"',
-  APP_INFO: JSON.stringify(version)
+  ENV_CONFIG: '"prod"',
+  BASE_API: '"https://api-prod"'
 }
