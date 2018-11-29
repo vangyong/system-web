@@ -155,5 +155,33 @@ export default {
     close: 'Close',
     closeOthers: 'Close Others',
     closeAll: 'Close All'
+  },
+  user: {
+    dynamicTips1: 'Fixed header, sorted by header order',
+    dynamicTips2: 'Not fixed header, sorted by click order',
+    dragTips1: 'The default order',
+    dragTips2: 'The after dragging order',
+    title: 'Title',
+    importance: 'Imp',
+    type: 'Type',
+    remark: 'Remark',
+    search: 'Search',
+    add: 'Add',
+    export: 'Export',
+    reviewer: 'reviewer',
+    userId: 'ID',
+    date: 'Date',
+    nickName: 'NickName',
+    userName: 'UserName',
+    gender: 'Gender',
+    mobileNumber: 'Mobile',
+    deleteStatus: 'DeleteStatus',
+    actions: 'Actions',
+    edit: 'Edit',
+    publish: 'Publish',
+    draft: 'Draft',
+    delete: 'Delete',
+    cancel: 'Cancel',
+    confirm: 'Confirm'
   }
 }

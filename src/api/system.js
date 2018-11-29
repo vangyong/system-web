@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function fetchUserList(query) {
   return request({
-    url: '/user/list',
+    url: '/v1/users/page',
     method: 'get',
     params: query
   })
