@@ -175,6 +175,7 @@ export default {
     userName: '用户名',
     gender: '性别',
     mobileNumber: '手机号',
+    createTime: '创建时间',
     deleteStatus: '状态',
     actions: 'Actions',
     edit: 'Edit',

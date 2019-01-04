@@ -41,6 +41,11 @@
           <span>{{ scope.row.mobileNumber }}</span>
         </template>
       </el-table-column>
+      <el-table-column :label="$t('user.createTime')" width="200" align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.createTime |formatDate }}</span>
+        </template>
+      </el-table-column>
       <el-table-column :label="$t('user.deleteStatus')" class-name="status-col" width="150">
         <template slot-scope="scope">
           <el-tag :type="scope.row.deleteStatus | statusFilter">{{ scope.row.deleteStatus }}</el-tag>
@@ -97,6 +102,7 @@
 import { fetchUserList, fetchPv, createUser, updateUser } from '@/api/system'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
+import { formatDate } from '@/utils/date'
 
 const genderOptions = [
   { key: 1, display_name: '男' },
@@ -124,6 +130,11 @@ export default {
     },
     genderFilter(gender) {
       return genderKeyValue[gender]
+    },
+    formatDate(time) {
+      const dateTime = new Date(time)
+      const dateFormated = formatDate(dateTime, 'yyyy-MM-dd hh:mm')
+      return dateFormated
     }
   },
   data() {

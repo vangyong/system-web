@@ -175,6 +175,7 @@ export default {
     userName: 'UserName',
     gender: 'Gender',
     mobileNumber: 'Mobile',
+    createTime: 'create time',
     deleteStatus: 'DeleteStatus',
     actions: 'Actions',
     edit: 'Edit',
