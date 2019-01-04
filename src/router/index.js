@@ -12,6 +12,7 @@ import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
 import systemRouter from './modules/system'
+import mallRouter from './modules/mall'
 
 /** note: Submenu only appear when children.length>=1
  *  detail see  https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -112,6 +113,7 @@ export default new Router({
 
 export const asyncRouterMap = [
   systemRouter,
+  mallRouter,
   {
     path: '/permission',
     component: Layout,
