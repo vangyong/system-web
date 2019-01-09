@@ -10,7 +10,7 @@ export function fetchUserList(query) {
 
 export function fetchUser(id) {
   return request({
-    url: '/user/',
+    url: '/v1/users/',
     method: 'get',
     params: { id }
   })
@@ -26,7 +26,7 @@ export function fetchPv(pv) {
 
 export function createUser(data) {
   return request({
-    url: '/user/add',
+    url: '/v1/users',
     method: 'post',
     data
   })
@@ -34,8 +34,16 @@ export function createUser(data) {
 
 export function updateUser(data) {
   return request({
-    url: '/user/update',
+    url: '/v1/users',
     method: 'post',
     data
+  })
+}
+
+export function deleteUser(userId) {
+  return request({
+    url: '/v1/users/' + userId,
+    method: 'delete',
+    userId
   })
 }

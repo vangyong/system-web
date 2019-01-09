@@ -161,32 +161,14 @@ export default {
     closeAll: 'Close All'
   },
   user: {
-    dynamicTips1: 'Fixed header, sorted by header order',
-    dynamicTips2: 'Not fixed header, sorted by click order',
-    dragTips1: 'The default order',
-    dragTips2: 'The after dragging order',
-    title: 'Title',
-    importance: 'Imp',
-    type: 'Type',
-    remark: 'Remark',
-    search: 'Search',
-    add: 'Add',
-    export: 'Export',
-    reviewer: 'reviewer',
     userId: 'ID',
     date: 'Date',
-    nickName: 'NickName',
-    userName: 'UserName',
+    nickName: 'Nick Name',
+    userName: 'User Name',
+    password: 'Password',
     gender: 'Gender',
     mobileNumber: 'Mobile',
-    createTime: 'create time',
-    deleteStatus: 'DeleteStatus',
-    actions: 'Actions',
-    edit: 'Edit',
-    publish: 'Publish',
-    draft: 'Draft',
-    delete: 'Delete',
-    cancel: 'Cancel',
-    confirm: 'Confirm'
+    createTime: 'Create Time',
+    deleteStatus: 'Delete Status'
   }
 }

@@ -161,32 +161,14 @@ export default {
     closeAll: '关闭所有'
   },
   user: {
-    dynamicTips1: 'Fixed header, sorted by header order',
-    dynamicTips2: 'Not fixed header, sorted by click order',
-    dragTips1: 'The default order',
-    dragTips2: 'The after dragging order',
-    title: 'Title',
-    importance: 'Imp',
-    type: 'Type',
-    remark: 'Remark',
-    search: 'Search',
-    add: 'Add',
-    export: 'Export',
-    reviewer: 'reviewer',
     userId: '用户编码',
     date: '时间',
     nickName: '昵称',
     userName: '用户名',
+    password: '密码',
     gender: '性别',
     mobileNumber: '手机号',
     createTime: '创建时间',
-    deleteStatus: '状态',
-    actions: 'Actions',
-    edit: 'Edit',
-    publish: 'Publish',
-    draft: 'Draft',
-    delete: 'Delete',
-    cancel: 'Cancel',
-    confirm: 'Confirm'
+    deleteStatus: '删除状态'
   }
 }

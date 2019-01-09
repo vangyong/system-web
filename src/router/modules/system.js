@@ -3,7 +3,7 @@ import Layout from '@/views/layout/Layout'
 const systemRouter = {
   path: '/system',
   component: Layout,
-  redirect: '/system/complex-table',
+  redirect: '/system/user',
   name: 'system',
   meta: {
     title: 'system',
