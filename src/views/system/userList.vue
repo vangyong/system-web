@@ -33,7 +33,7 @@
       </el-table-column>
       <el-table-column :label="$t('user.gender')" class-name="status-col" width="100">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.gender | genderFilter">{{ scope.row.gender }}</el-tag>
+          <el-tag :type="scope.row.gender">{{ scope.row.gender| genderFilter }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column :label="$t('user.mobileNumber')" width="200" align="center">
@@ -48,7 +48,7 @@
       </el-table-column>
       <el-table-column :label="$t('user.deleteStatus')" class-name="status-col" width="100">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.deleteStatus | statusFilter">{{ scope.row.deleteStatus }}</el-tag>
+          <el-tag :type="scope.row.deleteStatus ">{{ scope.row.deleteStatus | deleteStatusFilter }}</el-tag>
         </template>
       </el-table-column>
 
@@ -66,7 +66,7 @@
     </div>
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
-      <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
+      <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="120px" style="width: 400px; margin-left:50px;">
         <el-form-item :label="$t('user.nickName')" prop="nickName">
           <el-input :placeholder="$t('user.nickName')" v-model="temp.nickName" style="width: 200px;" class="filter-item"/>
         </el-form-item>
@@ -129,12 +129,12 @@ export default {
     waves
   },
   filters: {
-    statusFilter(status) {
-      const statusMap = {
+    deleteStatusFilter(status) {
+      const deleteStatusMap = {
         0: '未删除',
         1: '已删除'
       }
-      return statusMap[status]
+      return deleteStatusMap[status]
     },
     genderFilter(gender) {
       return genderKeyValue[gender]
