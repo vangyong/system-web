@@ -1,46 +1,43 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input :placeholder="$t('user.userName')" v-model="listQuery.userName" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
-      <el-select v-model="listQuery.gender" :placeholder="$t('user.gender')" clearable class="filter-item" style="width: 130px">
-        <el-option v-for="item in genderOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key"/>
+      <el-input :placeholder="$t('tenant.tenantName')" v-model="listQuery.tenantName" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
+      <el-select v-model="listQuery.status" :placeholder="$t('tenant.status')" clearable class="filter-item" style="width: 130px">
+        <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key"/>
       </el-select>
-      <el-input :placeholder="$t('user.mobileNumber')" v-model="listQuery.mobileNumber" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
-      <!--<el-select v-model="listQuery.sort" style="width: 140px" class="filter-item" @change="handleFilter">
-        <el-option v-for="item in sortOptions" :key="item.key" :label="item.label" :value="item.key"/>
-      </el-select>-->
+      <el-input :placeholder="$t('tenant.tenantCode')" v-model="listQuery.tenantCode" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">{{ $t('table.search') }}</el-button>
       <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">{{ $t('table.add') }}</el-button>
       <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">{{ $t('table.export') }}</el-button>
     </div>
 
     <el-table v-loading="listLoading" :key="tableKey" :data="list" border fit highlight-current-row style="width: 100%;">
-      <el-table-column :label="$t('user.nickName')" width="200" align="center">
+      <el-table-column :label="$t('tenant.tenantCode')" width="200" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.nickName }}</span>
+          <span>{{ scope.row.tenantCode }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('user.userName')" width="200" align="center">
+      <el-table-column :label="$t('tenant.tenantName')" width="200" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.userName }}</span>
+          <span>{{ scope.row.tenantName }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('user.gender')" class-name="status-col" width="100">
+      <el-table-column :label="$t('tenant.status')" class-name="status-col" width="100">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.gender">{{ scope.row.gender| genderFilter }}</el-tag>
+          <el-tag :type="scope.row.status">{{ scope.row.status| statusFilter }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('user.mobileNumber')" width="200" align="center">
+      <el-table-column :label="$t('tenant.mobileNumber')" width="200" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.mobileNumber }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('user.createTime')" width="150" align="center">
+      <el-table-column :label="$t('tenant.createTime')" width="150" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.createTime |formatDate }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('user.deleteStatus')" class-name="status-col" width="100">
+      <el-table-column :label="$t('tenant.deleteStatus')" class-name="status-col" width="100">
         <template slot-scope="scope">
           <el-tag :type="scope.row.deleteStatus ">{{ scope.row.deleteStatus | deleteStatusFilter }}</el-tag>
         </template>
@@ -48,9 +45,7 @@
 
       <el-table-column :label="$t('table.actions')" align="center" width="160" class-name="small-padding fixed-width">
         <template slot-scope="scope">
-          <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">{{ $t('table.edit') }}</el-button>
-          <el-button v-if="scope.row.deleteStatus!= 1" size="mini" type="danger" @click="handleDelete(scope.row)">{{ $t('table.delete') }}
-          </el-button>
+          <el-button type="primary" size="mini" @click="handleExamine(scope.row)">{{ $t('tenant.examine') }}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -61,25 +56,19 @@
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="120px" style="width: 400px; margin-left:50px;">
-        <el-form-item :label="$t('user.nickName')" prop="nickName">
-          <el-input :placeholder="$t('user.nickName')" v-model="temp.nickName" style="width: 200px;" class="filter-item"/>
+        <el-form-item :label="$t('tenant.tenantName')" prop="tenantName">
+          <el-input :placeholder="$t('tenant.tenantName')" v-model="temp.tenantName" style="width: 200px;" class="filter-item"/>
         </el-form-item>
-        <el-form-item :label="$t('user.userName')" prop="userName">
-          <el-input :placeholder="$t('user.userName')" v-model="temp.userName" style="width: 200px;" class="filter-item"/>
+        <el-form-item :label="$t('tenant.mobileNumber')" prop="mobileNumber">
+          <el-input :placeholder="$t('tenant.mobileNumber')" v-model="temp.mobileNumber" style="width: 200px;" class="filter-item"/>
         </el-form-item>
-        <el-form-item :label="$t('user.mobileNumber')" prop="mobileNumber">
-          <el-input :placeholder="$t('user.mobileNumber')" v-model="temp.mobileNumber" style="width: 200px;" class="filter-item"/>
-        </el-form-item>
-        <el-form-item :label="$t('user.password')" prop="password">
-          <el-input :placeholder="$t('user.password')" v-model="temp.password" type="password" style="width: 200px;" class="filter-item"/>
-        </el-form-item>
-        <el-form-item :label="$t('user.gender')" prop="gender">
-          <el-select :placeholder="$t('user.gender')" v-model="temp.gender" class="filter-item" >
-            <el-option v-for="item in genderOptions" :key="item.key" :label="item.display_name" :value="item.key"/>
+        <el-form-item :label="$t('tenant.status')" prop="status">
+          <el-select :placeholder="$t('tenant.status')" v-model="temp.status" class="filter-item" >
+            <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name" :value="item.key"/>
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('user.deleteStatus')" prop="deleteStatus">
-          <el-select :placeholder="$t('user.deleteStatus')" v-model="temp.deleteStatus" class="filter-item" >
+        <el-form-item :label="$t('tenant.deleteStatus')" prop="deleteStatus">
+          <el-select :placeholder="$t('tenant.deleteStatus')" v-model="temp.deleteStatus" class="filter-item" >
             <el-option v-for="item in deleteStatusOptions" :key="item.key" :label="item.display_name" :value="item.key"/>
           </el-select>
         </el-form-item>
@@ -87,41 +76,22 @@
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">{{ $t('table.cancel') }}</el-button>
         <el-button v-if="dialogStatus=='create'" type="primary" @click="createData">{{ $t('table.confirm') }}</el-button>
-        <el-button v-else type="primary" @click="updateData">{{ $t('table.confirm') }}</el-button>
+        <el-button v-if="dialogStatus=='examine'" type="primary" @click="examineData">{{ $t('table.confirm') }}</el-button>
+        <!--<el-button v-else type="primary" @click="updateData">{{ $t('table.confirm') }}</el-button>-->
       </div>
-    </el-dialog>
-
-    <el-dialog :visible.sync="dialogPvVisible" title="Reading statistics">
-      <el-table :data="pvData" border fit highlight-current-row style="width: 100%">
-        <el-table-column prop="key" label="Channel"/>
-        <el-table-column prop="pv" label="Pv"/>
-      </el-table>
-      <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="dialogPvVisible = false">{{ $t('table.confirm') }}</el-button>
-      </span>
     </el-dialog>
 
   </div>
 </template>
 
 <script>
-import { fetchUserList, createUser, updateUser, deleteUser } from '@/api/system'
+import { fetchTenantList, createTenant, updateTenant, examineTenant, deleteTenant } from '@/api/system'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 import { formatDate } from '@/utils/date'
 
-// const genderOptions = [
-//   { key: '1', display_name: '男' },
-//   { key: '0', display_name: '女' }
-// ]
-//
-// const genderKeyValue = genderOptions.reduce((acc, cur) => {
-//   acc[cur.key] = cur.display_name
-//   return acc
-// }, {})
-
 export default {
-  name: 'UserList',
+  name: 'TenantList',
   directives: {
     waves
   },
@@ -133,13 +103,16 @@ export default {
       }
       return deleteStatusMap[status]
     },
-    genderFilter(gender) {
-      const genderMap = {
-        1: '男',
-        0: '女'
+    statusFilter(status) {
+      const statusMap = {
+        0: '注册',
+        1: '待审核',
+        2: '审核未通过',
+        3: '正常经营',
+        4: '暂停经营',
+        5: '注销'
       }
-      return genderMap[gender]
-      // return genderKeyValue[gender]
+      return statusMap[status]
     },
     formatDate(time) {
       const dateTime = new Date(time)
@@ -156,14 +129,18 @@ export default {
       listQuery: {
         page: 1,
         limit: 20,
-        userName: undefined,
+        tenantName: undefined,
         gender: undefined,
         mobileNumber: undefined,
         sort: undefined
       },
-      genderOptions: [
-        { key: 1, display_name: this.$t('user.gender_male') },
-        { key: 0, display_name: this.$t('user.gender_female') }
+      statusOptions: [
+        { key: 0, display_name: this.$t('tenant.status_0') },
+        { key: 1, display_name: this.$t('tenant.status_1') },
+        { key: 2, display_name: this.$t('tenant.status_2') },
+        { key: 3, display_name: this.$t('tenant.status_3') },
+        { key: 4, display_name: this.$t('tenant.status_4') },
+        { key: 5, display_name: this.$t('tenant.status_5') }
       ],
       deleteStatusOptions: [
         { key: 1, display_name: this.$t('form.deleteStatus_deleted') },
@@ -171,8 +148,8 @@ export default {
       ],
       showReviewer: false,
       temp: {
-        userId: undefined,
-        userName: undefined,
+        tenantId: undefined,
+        tenantName: undefined,
         nickName: undefined,
         mobileNumber: undefined,
         password: undefined,
@@ -201,7 +178,7 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      fetchUserList(this.listQuery).then(response => {
+      fetchTenantList(this.listQuery).then(response => {
         this.list = response.data.content
         this.total = response.data.totalElements
         setTimeout(() => {
@@ -221,21 +198,12 @@ export default {
       this.listQuery.page = val
       this.getList()
     },
-    // handleModifyStatus(row, status) {
-    //   this.$message({
-    //     message: '操作成功',
-    //     type: 'success'
-    //   })
-    //   row.status = status
-    // },
     resetTemp() {
       this.temp = {
-        userId: undefined,
-        userName: undefined,
-        nickName: undefined,
+        tenantId: undefined,
+        tenantName: undefined,
         mobileNumber: undefined,
-        password: undefined,
-        gender: 0,
+        status: 0,
         deleteStatus: 0
       }
     },
@@ -250,7 +218,7 @@ export default {
     createData() {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
-          createUser(this.temp).then(() => {
+          createTenant(this.temp).then(() => {
             this.list.unshift(this.temp)
             this.dialogFormVisible = false
             this.$notify({
@@ -277,8 +245,42 @@ export default {
       this.$refs['dataForm'].validate((valid) => {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
-          tempData.timestamp = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
-          updateUser(tempData).then(() => {
+          tempData.timestamp = +new Date(tempData.timestamp)
+          updateTenant(tempData).then(() => {
+            for (const v of this.list) {
+              if (v.id === this.temp.id) {
+                const index = this.list.indexOf(v)
+                this.list.splice(index, 1, this.temp)
+                break
+              }
+            }
+            this.dialogFormVisible = false
+            this.$notify({
+              title: this.$t('notify.success'),
+              message: this.$t('notify.updateSuccess'),
+              type: 'success',
+              duration: 2000
+            })
+            this.handleFilter()
+          })
+        }
+      })
+    },
+    handleExamine(row) {
+      this.temp = Object.assign({}, row)
+      this.temp.timestamp = new Date(this.temp.timestamp)
+      this.dialogStatus = 'examine'
+      this.dialogFormVisible = true
+      this.$nextTick(() => {
+        this.$refs['dataForm'].clearValidate()
+      })
+    },
+    examineData() {
+      this.$refs['dataForm'].validate((valid) => {
+        if (valid) {
+          const tempData = Object.assign({}, this.temp)
+          tempData.timestamp = +new Date(tempData.timestamp)
+          examineTenant(tempData).then(() => {
             for (const v of this.list) {
               if (v.id === this.temp.id) {
                 const index = this.list.indexOf(v)
@@ -299,7 +301,7 @@ export default {
       })
     },
     handleDelete(row) {
-      deleteUser(row.userId).then(response => {
+      deleteTenant(row.tenantId).then(response => {
         var deleteStatus = response.data.deleteStatus
         if (deleteStatus === 1) {
           this.$notify({
@@ -315,13 +317,13 @@ export default {
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['nickName', 'userName', 'gender', 'mobileNumber', 'createTime']
-        const filterVal = ['nickName', 'userName', 'gender', 'mobileNumber', 'createTime']
+        const tHeader = ['tenantName', 'tenantCode', 'status', 'mobileNumber', 'createTime']
+        const filterVal = ['tenantName', 'tenantCode', 'status', 'mobileNumber', 'createTime']
         const data = this.formatJson(filterVal, this.list)
         excel.export_json_to_excel({
           header: tHeader,
           data,
-          filename: 'user-list'
+          filename: 'tenant-list'
         })
         this.downloadLoading = false
       })

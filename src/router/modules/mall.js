@@ -11,6 +11,12 @@ const mallRouter = {
   },
   children: [
     {
+      path: 'goods',
+      component: () => import('@/views/mall/goodsList'),
+      name: 'goods',
+      meta: { title: 'goods' }
+    },
+    {
       path: 'member',
       component: () => import('@/views/mall/memberList'),
       name: 'member',

@@ -27,6 +27,12 @@ const systemRouter = {
       component: () => import('@/views/system/resourceList'),
       name: 'resource',
       meta: { title: 'resource' }
+    },
+    {
+      path: 'tenant',
+      component: () => import('@/views/system/tenantList'),
+      name: 'tenant',
+      meta: { title: 'tenant' }
     }
   ]
 }

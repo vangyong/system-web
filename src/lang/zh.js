@@ -11,7 +11,9 @@ export default {
     user: '用户管理',
     role: '角色管理',
     resource: '资源管理',
+    tenant: '租户管理',
     mall: '商城管理',
+    goods: '商品管理',
     member: '会员管理',
     product: '商品管理',
     order: '订单管理',
@@ -135,6 +137,17 @@ export default {
     cancel: '取 消',
     confirm: '确 定'
   },
+  form: {
+    create: '新增',
+    update: '编辑',
+    delete: '删除',
+    cancel: '取消',
+    save: '保存',
+    confirm: '确定',
+    deleteStatus: '删除状态',
+    deleteStatus_deleted: '已删除',
+    deleteStatus_nodelete: '未删除'
+  },
   errorLog: {
     tips: '请点击右上角bug小图标',
     description: '现在的管理后台基本都是spa的形式了，它增强了用户体验，但同时也会增加页面出问题的可能性，可能一个小小的疏忽就导致整个页面的死锁。好在 Vue 官网提供了一个方法来捕获处理异常，你可以在其中进行错误处理或者异常上报。',
@@ -160,15 +173,61 @@ export default {
     closeOthers: '关闭其它',
     closeAll: '关闭所有'
   },
+  notify: {
+    success: '成功',
+    createSuccess: '创建成功',
+    editSuccess: '修改成功',
+    deleteSuccess: '删除成功',
+    fail: '失败',
+    createFail: '创建失败',
+    editFail: '修改失败',
+    deleteFail: '删除失败'
+  },
   user: {
-    userId: '用户编码',
-    date: '时间',
+    userId: '用户id',
     nickName: '昵称',
     userName: '用户名',
     password: '密码',
     gender: '性别',
+    gender_male: '男',
+    gender_female: '女',
     mobileNumber: '手机号',
     createTime: '创建时间',
     deleteStatus: '删除状态'
+  },
+  tenant: {
+    tenantId: '租户id',
+    tenantName: '租户名称',
+    tenantCode: '租户编码',
+    status: '状态',
+    status_0: '注册',
+    status_1: '待审核',
+    status_2: '审核未通过',
+    status_3: '正常经营',
+    status_4: '暂停经营',
+    status_5: '注销',
+    mobileNumber: '手机号',
+    officePhone: '手机号',
+    createTime: '创建时间',
+    deleteStatus: '删除状态',
+    businessModel: '经营模式',
+    mainProduct: '主营产品',
+    examine: '审核'
+  },
+  goods: {
+    goodsId: '商品id',
+    goodsName: '商品名称',
+    goodsCode: '商品编码',
+    status: '状态',
+    status_0: '编辑',
+    status_1: '待审核',
+    status_2: '审核未通过',
+    status_3: '正在销售',
+    status_4: '下架',
+    status_5: '卖光',
+    brief: '摘要',
+    createTime: '创建时间',
+    deleteStatus: '删除状态',
+    examine: '审核'
   }
 }

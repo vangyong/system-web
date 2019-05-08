@@ -39,3 +39,52 @@ export function updateArticle(data) {
     data
   })
 }
+
+export function fetchGoodsList(query) {
+  return request({
+    url: '/v1/mall/goods/page',
+    method: 'get',
+    params: query
+  })
+}
+
+export function fetchGoods(id) {
+  return request({
+    url: '/v1/mall/goods/',
+    method: 'get',
+    params: { id }
+  })
+}
+
+export function createGoods(data) {
+  return request({
+    url: '/v1/system/goods',
+    method: 'post',
+    data
+  })
+}
+
+export function updateGoods(data) {
+  return request({
+    url: '/v1/mall/goods',
+    method: 'put',
+    data
+  })
+}
+
+export function examineGoods(data) {
+  return request({
+    url: '/v1/mall/goods/examine',
+    method: 'put',
+    data
+  })
+}
+
+export function deleteGoods(goodsId) {
+  return request({
+    url: '/v1/mall/goods/' + goodsId,
+    method: 'delete',
+    goodsId
+  })
+}
+

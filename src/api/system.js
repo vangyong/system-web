@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function fetchUserList(query) {
   return request({
-    url: '/v1/users/page',
+    url: '/v1/system/user/page',
     method: 'get',
     params: query
   })
@@ -10,7 +10,7 @@ export function fetchUserList(query) {
 
 export function fetchUser(id) {
   return request({
-    url: '/v1/users/',
+    url: '/v1/system/user/',
     method: 'get',
     params: { id }
   })
@@ -26,7 +26,7 @@ export function fetchPv(pv) {
 
 export function createUser(data) {
   return request({
-    url: '/v1/users',
+    url: '/v1/system/user',
     method: 'post',
     data
   })
@@ -34,16 +34,64 @@ export function createUser(data) {
 
 export function updateUser(data) {
   return request({
-    url: '/v1/users',
-    method: 'post',
+    url: '/v1/system/user',
+    method: 'put',
     data
   })
 }
 
 export function deleteUser(userId) {
   return request({
-    url: '/v1/users/' + userId,
+    url: '/v1/system/user/' + userId,
     method: 'delete',
     userId
+  })
+}
+
+export function fetchTenantList(query) {
+  return request({
+    url: '/v1/system/tenant/page',
+    method: 'get',
+    params: query
+  })
+}
+
+export function fetchTenant(id) {
+  return request({
+    url: '/v1/system/tenant/',
+    method: 'get',
+    params: { id }
+  })
+}
+
+export function createTenant(data) {
+  return request({
+    url: '/v1/system/tenant',
+    method: 'post',
+    data
+  })
+}
+
+export function updateTenant(data) {
+  return request({
+    url: '/v1/system/tenant',
+    method: 'put',
+    data
+  })
+}
+
+export function examineTenant(data) {
+  return request({
+    url: '/v1/system/tenant/examine',
+    method: 'put',
+    data
+  })
+}
+
+export function deleteTenant(tenantId) {
+  return request({
+    url: '/v1/system/tenant/' + tenantId,
+    method: 'delete',
+    tenantId
   })
 }

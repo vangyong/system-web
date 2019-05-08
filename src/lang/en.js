@@ -11,7 +11,9 @@ export default {
     user: 'User Manage',
     role: 'Role Manage',
     resource: 'Resource Manage',
+    tenant: 'Tenant Manage',
     mall: 'Mall Manage',
+    goods: 'Goods Manage',
     member: 'Member Manage',
     product: 'Product Manage',
     order: 'Order Manage',
@@ -135,6 +137,17 @@ export default {
     cancel: 'Cancel',
     confirm: 'Confirm'
   },
+  form: {
+    create: 'Create',
+    update: 'Edit',
+    delete: 'Delete',
+    cancel: 'Cancel',
+    save: 'Save',
+    confirm: 'Confirm',
+    deleteStatus: 'DeleteStatus',
+    deleteStatus_deleted: 'Deleted',
+    deleteStatus_nodelete: 'NoDelete'
+  },
   errorLog: {
     tips: 'Please click the bug icon in the upper right corner',
     description: 'Now the management system are basically the form of the spa, it enhances the user experience, but it also increases the possibility of page problems, a small negligence may lead to the entire page deadlock. Fortunately Vue provides a way to catch handling exceptions, where you can handle errors or report exceptions.',
@@ -160,15 +173,61 @@ export default {
     closeOthers: 'Close Others',
     closeAll: 'Close All'
   },
+  notify: {
+    success: 'Success',
+    createSuccess: 'Create Success',
+    editSuccess: 'Edit Success',
+    deleteSuccess: 'Delete Success',
+    fail: 'Fail',
+    createFail: 'Create Fail',
+    editFail: 'Edit Fail',
+    deleteFail: 'Delete Fail'
+  },
   user: {
-    userId: 'ID',
-    date: 'Date',
+    userId: 'User Id',
     nickName: 'Nick Name',
     userName: 'User Name',
     password: 'Password',
     gender: 'Gender',
+    gender_male: 'Male',
+    gender_female: 'Female',
     mobileNumber: 'Mobile',
     createTime: 'Create Time',
     deleteStatus: 'Delete Status'
+  },
+  tenant: {
+    tenantId: 'Tenant Id',
+    tenantName: 'Tenant Name',
+    tenantCode: 'Tenant Code',
+    status: 'Status',
+    status_0: 'register',
+    status_1: 'Pending Review',
+    status_2: 'No Pass',
+    status_3: 'Normal Operation',
+    status_4: 'Paused',
+    status_5: 'Revoke',
+    mobileNumber: 'Mobile Number',
+    officePhone: 'Office Phone',
+    createTime: 'Create Time',
+    deleteStatus: 'Delete Status',
+    businessModel: 'Business Model',
+    mainProduct: 'Main Product',
+    examine: 'Examine'
+  },
+  goods: {
+    goodsId: 'Goods Id',
+    goodsName: 'Goods Name',
+    goodsCode: 'Goods Code',
+    status: 'Status',
+    status_0: 'Edit',
+    status_1: 'Pending Review',
+    status_2: 'No Pass',
+    status_3: 'On Sale',
+    status_4: 'Obtained',
+    status_5: 'Sold Out',
+    brief: 'Brief',
+    createTime: 'Create Time',
+    deleteStatus: 'Delete Status',
+    examine: 'Examine'
   }
 }
