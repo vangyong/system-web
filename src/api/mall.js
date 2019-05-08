@@ -58,7 +58,7 @@ export function fetchGoods(id) {
 
 export function createGoods(data) {
   return request({
-    url: '/v1/system/goods',
+    url: '/v1/mall/goods',
     method: 'post',
     data
   })
@@ -88,3 +88,34 @@ export function deleteGoods(goodsId) {
   })
 }
 
+export function fetchSaleOrderList(query) {
+  return request({
+    url: '/v1/mall/sale/order/page',
+    method: 'get',
+    params: query
+  })
+}
+
+export function fetchSaleOrder(id) {
+  return request({
+    url: '/v1/mall/sale/order/',
+    method: 'get',
+    params: { id }
+  })
+}
+
+export function updateSaleOrder(data) {
+  return request({
+    url: '/v1/mall/sale/order',
+    method: 'put',
+    data
+  })
+}
+
+export function examineSaleOrder(data) {
+  return request({
+    url: '/v1/mall/sale/order/examine',
+    method: 'put',
+    data
+  })
+}

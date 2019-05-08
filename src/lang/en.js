@@ -16,7 +16,7 @@ export default {
     goods: 'Goods Manage',
     member: 'Member Manage',
     product: 'Product Manage',
-    order: 'Order Manage',
+    saleOrder: 'Sale Order',
     icons: 'Icons',
     components: 'Components',
     componentIndex: 'Introduction',
@@ -229,5 +229,19 @@ export default {
     createTime: 'Create Time',
     deleteStatus: 'Delete Status',
     examine: 'Examine'
+  },
+  saleOrder: {
+    saleOrderId: 'SaleOrderid',
+    saleOrderName: 'SaleOrder Name',
+    saleOrderCode: 'SaleOrder Code',
+    status: 'Status',
+    status_0: 'Not Shipped ',
+    status_1: 'Shipped',
+    status_2: 'Complete',
+    orderMoney: 'Order Money',
+    shipFee: 'Ship Fee',
+    createTime: '创建时间',
+    deleteStatus: '删除状态',
+    examine: '审核'
   }
 }

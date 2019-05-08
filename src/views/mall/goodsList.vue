@@ -105,12 +105,12 @@ export default {
     },
     statusFilter(status) {
       const statusMap = {
-        0: '注册',
+        0: '编辑',
         1: '待审核',
         2: '审核未通过',
-        3: '正常经营',
-        4: '暂停经营',
-        5: '注销'
+        3: '正在销售',
+        4: '下架',
+        5: '售完'
       }
       return statusMap[status]
     },
@@ -257,7 +257,7 @@ export default {
             this.dialogFormVisible = false
             this.$notify({
               title: this.$t('notify.success'),
-              message: this.$t('notify.updateSuccess'),
+              message: this.$t('notify.editSuccess'),
               type: 'success',
               duration: 2000
             })
@@ -291,7 +291,7 @@ export default {
             this.dialogFormVisible = false
             this.$notify({
               title: this.$t('notify.success'),
-              message: this.$t('notify.updateSuccess'),
+              message: this.$t('notify.editSuccess'),
               type: 'success',
               duration: 2000
             })

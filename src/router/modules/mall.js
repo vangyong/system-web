@@ -29,10 +29,10 @@ const mallRouter = {
       meta: { title: 'product' }
     },
     {
-      path: 'order',
-      component: () => import('@/views/mall/orderList'),
-      name: 'order',
-      meta: { title: 'order' }
+      path: 'saleOrder',
+      component: () => import('@/views/mall/saleOrderList'),
+      name: 'saleOrder',
+      meta: { title: 'saleOrder' }
     }
   ]
 }

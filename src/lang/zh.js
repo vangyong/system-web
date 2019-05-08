@@ -16,7 +16,7 @@ export default {
     goods: '商品管理',
     member: '会员管理',
     product: '商品管理',
-    order: '订单管理',
+    saleOrder: '卖家订单',
     icons: '图标',
     components: '组件',
     componentIndex: '介绍',
@@ -176,7 +176,7 @@ export default {
   notify: {
     success: '成功',
     createSuccess: '创建成功',
-    editSuccess: '修改成功',
+    editSuccess: '编辑成功',
     deleteSuccess: '删除成功',
     fail: '失败',
     createFail: '创建失败',
@@ -226,6 +226,20 @@ export default {
     status_4: '下架',
     status_5: '卖光',
     brief: '摘要',
+    createTime: '创建时间',
+    deleteStatus: '删除状态',
+    examine: '审核'
+  },
+  saleOrder: {
+    saleOrderId: '订单id',
+    saleOrderName: '订单名称',
+    saleOrderCode: '订单编码',
+    status: '状态',
+    status_0: '未发货',
+    status_1: '已发货',
+    status_2: '已完成',
+    orderMoney: '金额',
+    shipFee: '运费',
     createTime: '创建时间',
     deleteStatus: '删除状态',
     examine: '审核'
