@@ -1,5 +1,6 @@
 import request from '@/utils/request'
 import axios from 'axios'
+import qs from 'qs'
 
 const Base64 = require('js-base64').Base64
 
@@ -9,41 +10,24 @@ export function loginByUsername(username, password) {
   //   password
   // }
 
-  // let formData = new FormData()
-  // formData.append('username', username)
-  // formData.append('password', password)
-
   // return request({
   //   url: '/login/login',
   //   method: 'post',
   //   data
   // })
-  const config = {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic ' + Base64.encode('system:system')
-    }
+
+  const user = {
+    'username': username,
+    'password': password
   }
-
-  const form = new FormData()
-  form.append('username', username)
-  form.append('password', password)
-  const param = new URLSearchParams(form)
-
-  return axios.post('/v1/sso-server/form/token', param, config)
-    .then(res => res.data)
-
-  // return axios.post('/v1/sso-server/form/token?' + encodeURIComponent('username') + '=' + encodeURIComponent(username) + '&' + encodeURIComponent('password') + '=' + encodeURIComponent(password), config)
-
-  // return request({
-  //   url: '/v1/sso-server/form/token',
-  //   method: 'post',
-  //   headers: {
-  //     'Content-Type': 'multipart/form-data',
-  //     'Authorization': 'Basic ' + Base64.encode('system:system')
-  //   },
-  //   formData
-  // })
+  const options = {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic ' + Base64.encode('system:system') },
+    data: qs.stringify(user),
+    url: '/v1/sso-server/form/token'
+  }
+  return axios(options)
 }
 
 export function logout() {
