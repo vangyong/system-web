@@ -3,6 +3,7 @@ import axios from 'axios'
 import qs from 'qs'
 
 const Base64 = require('js-base64').Base64
+const jwt = require('jsonwebtoken')
 
 export function loginByUsername(username, password) {
   // const data = {
@@ -22,8 +23,10 @@ export function loginByUsername(username, password) {
   }
   const options = {
     method: 'POST',
-    headers: { 'content-type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic ' + Base64.encode('system:system') },
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic ' + Base64.encode('system:system')
+    },
     data: qs.stringify(user),
     url: '/v1/sso-server/form/token'
   }
@@ -38,10 +41,20 @@ export function logout() {
 }
 
 export function getUserInfo(token) {
+  const decoded_comlete = jwt.decode(token, { complete: true })
+  const user_name = decoded_comlete.payload.user_name
+  // return request({
+  //   url: '/user/info',
+  //   method: 'get',
+  //   params: { user_name }
+  // })
   return request({
-    url: '/user/info',
+    url: '/v1/sso-server/user/name/' + user_name,
     method: 'get',
-    params: { token }
+    headers: {
+      'Authorization': 'bearer ' + token
+    },
+    params: { user_name }
   })
 }
 

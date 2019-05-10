@@ -67,9 +67,13 @@ const user = {
             reject('error')
           }
           const data = response.data
-
-          if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
-            commit('SET_ROLES', data.roles)
+          if (data.roleList && data.roleList.length > 0) { // 验证返回的roles是否是一个非空数组
+            const roleList = data.roleList
+            const roles = []
+            for (let i = 0; i < roleList.size(); i++) {
+              roles.push(roleList[i].roleCode)
+            }
+            commit('SET_ROLES', roles)
           } else {
             reject('getInfo: roles must be a non-null array !')
           }
