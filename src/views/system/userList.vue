@@ -185,8 +185,6 @@ export default {
         update: this.$t('form.update'),
         create: this.$t('form.create')
       },
-      dialogPvVisible: false,
-      pvData: [],
       rules: {
         type: [{ required: true, message: 'type is required', trigger: 'change' }],
         timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],

@@ -2,7 +2,7 @@
 
 ## 简介
 
-[system_web] 是一个后台集成解决方案，它基于 [vue](https://github.com/vuejs/vue) 和 [element](https://github.com/ElemeFE/element)。它使用了最新的前端技术栈，内置了 i18 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以帮助你快速搭建企业级中后台产品原型。相信不管你的需求是什么，本项目都能帮助到你。
+[system_web] 是一个后台集成解决方案，它基于 [vue](https://github.com/vuejs/vue) 和 [element](https://github.com/ElemeFE/element)。内置了 i18 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以快速搭建企业级中后台产品原型。
 
 
 **本项目的定位是后台集成方案，不适合当基础模板来开发。**
@@ -19,10 +19,15 @@
 
 ## 前序准备
 
-你需要在本地安装 [node](http://nodejs.org/) 和 [git](https://git-scm.com/)。本项目技术栈基于 [ES2015+](http://es6.ruanyifeng.com/)、[vue](https://cn.vuejs.org/index.html)、[vuex](https://vuex.vuejs.org/zh-cn/)、[vue-router](https://router.vuejs.org/zh-cn/) 、[axios](https://github.com/axios/axios) 和 [element-ui](https://github.com/ElemeFE/element)，所有的请求数据都使用[Mock.js](https://github.com/nuysoft/Mock)模拟，提前了解和学习这些知识会对使用本项目有很大的帮助。
-
-同时配套一个系列的教程文章，如何从零构建后一个完整的后台项目，建议大家先看完这些文章再来实践本项目
-
+你需要在本地安装 [node](http://nodejs.org/) 和 [git](https://git-scm.com/)。
+本项目技术栈基于 [ES2015+](http://es6.ruanyifeng.com/)、
+[vue](https://cn.vuejs.org/index.html)、
+[vuex](https://vuex.vuejs.org/zh-cn/)、
+[vue-router](https://router.vuejs.org/zh-cn/) 、
+[axios](https://github.com/axios/axios) 、
+[element-ui](https://github.com/ElemeFE/element)，
+所有的请求数据都使用[Mock.js](https://github.com/nuysoft/Mock)模拟。
+Refer to https://github.com/PanJiaChen/vue-element-admin.git
 
 **如有问题请先看上述使用文档和文章，若不能满足，欢迎 issue 和 pr**
 
@@ -107,7 +112,7 @@ npm install --registry=https://registry.npm.taobao.org
 npm run dev
 ```
 
-浏览器访问 http://localhost:9527
+浏览器访问 http://localhost:11001
 
 ## 发布
 
@@ -138,17 +143,10 @@ npm run lint
 npm run lint -- --fix
 ```
 
-## Changelog
-
-Detailed changes for each release are documented in the [release notes]
-
-## Online Demo
-
-[在线 Demo]
-
+Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/guide/essentials/deploy.html) for more information
 
 ## License
 
 [MIT]
 
-Copyright (c) 2017-present wangyong
+Copyright (c) 2019-present www.fengtuwei.com

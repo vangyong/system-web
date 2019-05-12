@@ -4,7 +4,7 @@ English | [简体中文](./README.zh-CN.md)
 
 [system_web] is a front-end management background integration solution. It based on [vue](https://github.com/vuejs/vue) and use the UI Toolkit [element](https://github.com/ElemeFE/element).
 
-It is a magical vue admin based on the newest development stack of vue, built-in i18n solution, typical templates for enterprise applications, lots of awesome features. It helps you build a large complex Single-Page Applications. I believe whatever your needs are, this project will help you.
+It is a magical vue admin based on the newest development stack of vue, built-in i18n solution, typical templates for enterprise applications, lots of awesome features. It helps you build a large complex Single-Page Applications.
 
 
 **This project is positioned as a background integration solution and is not suitable for secondary development as a basic template.**
@@ -21,7 +21,15 @@ It is a magical vue admin based on the newest development stack of vue, built-in
 
 ## Preparation
 
-You need to install [node](http://nodejs.org/) and [git](https://git-scm.com/) locally. The project is based on [ES2015+](http://es6.ruanyifeng.com/), [vue](https://cn.vuejs.org/index.html), [vuex](https://vuex.vuejs.org/zh-cn/), [vue-router](https://router.vuejs.org/zh-cn/), [axios](https://github.com/axios/axios) and [element-ui](https://github.com/ElemeFE/element), all request data is simulated using [Mock.js](https://github.com/nuysoft/Mock).
+You need to install [node](http://nodejs.org/) and [git](https://git-scm.com/) locally.
+ The project is based on 
+[ES2015+](http://es6.ruanyifeng.com/), 
+[vue](https://cn.vuejs.org/index.html), 
+[vuex](https://vuex.vuejs.org/zh-cn/), 
+[vue-router](https://router.vuejs.org/zh-cn/), 
+[axios](https://github.com/axios/axios) ,
+[element-ui](https://github.com/ElemeFE/element),
+ all request data is simulated using [Mock.js](https://github.com/nuysoft/Mock).
 Understanding and learning this knowledge in advance will greatly help the use of this project.
 
 ---
@@ -138,16 +146,9 @@ npm run lint -- --fix
 
 Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/guide/essentials/deploy.html) for more information
 
-## Changelog
-
-Detailed changes for each release are documented in the [release notes]
-
-## Online Demo
-
-[Preview]
 
 ## License
 
 [MIT]
 
-Copyright (c) 2018-present YongWang
+Copyright (c) 2019-present www.fengtuwei.com

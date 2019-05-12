@@ -70,7 +70,7 @@ const user = {
           if (data.roleList && data.roleList.length > 0) { // 验证返回的roles是否是一个非空数组
             const roleList = data.roleList
             const roles = []
-            for (let i = 0; i < roleList.size(); i++) {
+            for (let i = 0; i < roleList.length; i++) {
               roles.push(roleList[i].roleCode)
             }
             commit('SET_ROLES', roles)
@@ -78,7 +78,7 @@ const user = {
             reject('getInfo: roles must be a non-null array !')
           }
 
-          commit('SET_NAME', data.name)
+          commit('SET_NAME', data.username)
           commit('SET_AVATAR', data.avatar)
           commit('SET_INTRODUCTION', data.introduction)
           resolve(response)

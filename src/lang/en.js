@@ -86,7 +86,7 @@ export default {
     logIn: 'Log in',
     username: 'Username',
     password: 'Password',
-    any: 'any',
+    any: '123456',
     thirdparty: 'Or connect with',
     thirdpartyTips: 'Can not be simulated on local, so please combine you own business simulation! ! !'
   },
@@ -192,6 +192,30 @@ export default {
     gender_male: 'Male',
     gender_female: 'Female',
     mobileNumber: 'Mobile',
+    createTime: 'Create Time',
+    deleteStatus: 'Delete Status'
+  },
+  role: {
+    roleId: 'Role Id',
+    roleName: 'Role Name',
+    roleCode: 'Role Code',
+    description: 'description',
+    locked: 'Locked Status',
+    locked_0: 'No Locked',
+    locked_1: 'Locked',
+    tenant_id: 'Tenant Id',
+    createTime: 'Create Time',
+    deleteStatus: 'Delete Status'
+  },
+  resource: {
+    resourceId: 'Resource Id',
+    resourceName: 'Resource Name',
+    resourceCode: 'Resource Code',
+    resourceUrl: 'Resource Url',
+    description: 'Description',
+    hide: 'Hide',
+    hide_0: 'No Hide',
+    hide_1: 'Hide',
     createTime: 'Create Time',
     deleteStatus: 'Delete Status'
   },

@@ -86,7 +86,7 @@ export default {
     logIn: '登录',
     username: '账号',
     password: '密码',
-    any: '随便填',
+    any: '123456',
     thirdparty: '第三方登录',
     thirdpartyTips: '本地不能模拟，请结合自己业务进行模拟！！！'
   },
@@ -192,6 +192,30 @@ export default {
     gender_male: '男',
     gender_female: '女',
     mobileNumber: '手机号',
+    createTime: '创建时间',
+    deleteStatus: '删除状态'
+  },
+  role: {
+    roleId: '角色id',
+    roleName: '角色名称',
+    roleCode: '角色编码',
+    description: '描述',
+    locked: '状态',
+    locked_0: '未锁',
+    locked_1: '已锁',
+    tenant_id: '租户id',
+    createTime: '创建时间',
+    deleteStatus: '删除状态'
+  },
+  resource: {
+    resourceId: '资源id',
+    resourceName: '资源名称',
+    resourceCode: '资源编码',
+    resourceUrl: '资源URL',
+    description: '描述',
+    hide: '隐藏状态',
+    hide_0: '未隐藏',
+    hide_1: '已隐藏',
     createTime: '创建时间',
     deleteStatus: '删除状态'
   },

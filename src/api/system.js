@@ -16,14 +16,6 @@ export function fetchUser(id) {
   })
 }
 
-export function fetchPv(pv) {
-  return request({
-    url: '/article/pv',
-    method: 'get',
-    params: { pv }
-  })
-}
-
 export function createUser(data) {
   return request({
     url: '/v1/system/user',
@@ -45,6 +37,86 @@ export function deleteUser(userId) {
     url: '/v1/system/user/' + userId,
     method: 'delete',
     userId
+  })
+}
+
+export function fetchRoleList(query) {
+  return request({
+    url: '/v1/system/role/page',
+    method: 'get',
+    params: query
+  })
+}
+
+export function fetchRole(id) {
+  return request({
+    url: '/v1/system/role/',
+    method: 'get',
+    params: { id }
+  })
+}
+
+export function createRole(data) {
+  return request({
+    url: '/v1/system/role',
+    method: 'post',
+    data
+  })
+}
+
+export function updateRole(data) {
+  return request({
+    url: '/v1/system/role',
+    method: 'put',
+    data
+  })
+}
+
+export function deleteRole(roleId) {
+  return request({
+    url: '/v1/system/role/' + roleId,
+    method: 'delete',
+    roleId
+  })
+}
+
+export function fetchResourceList(query) {
+  return request({
+    url: '/v1/system/resource/page',
+    method: 'get',
+    params: query
+  })
+}
+
+export function fetchResource(id) {
+  return request({
+    url: '/v1/system/resource/',
+    method: 'get',
+    params: { id }
+  })
+}
+
+export function createResource(data) {
+  return request({
+    url: '/v1/system/resource',
+    method: 'post',
+    data
+  })
+}
+
+export function updateResource(data) {
+  return request({
+    url: '/v1/system/resource',
+    method: 'put',
+    data
+  })
+}
+
+export function deleteResource(roleId) {
+  return request({
+    url: '/v1/system/resource/' + roleId,
+    method: 'delete',
+    roleId
   })
 }
 
