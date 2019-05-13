@@ -27,7 +27,7 @@
       </el-table-column>
       <el-table-column :label="$t('user.gender')" class-name="status-col" width="100">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.gender">{{ scope.row.gender| genderFilter }}</el-tag>
+          <el-tag>{{ scope.row.gender | genderFilter }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column :label="$t('user.mobileNumber')" width="200" align="center">
@@ -42,7 +42,7 @@
       </el-table-column>
       <el-table-column :label="$t('user.deleteStatus')" class-name="status-col" width="100">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.deleteStatus ">{{ scope.row.deleteStatus | deleteStatusFilter }}</el-tag>
+          <el-tag>{{ scope.row.deleteStatus | deleteStatusFilter }}</el-tag>
         </template>
       </el-table-column>
 
@@ -89,16 +89,6 @@
         <el-button v-if="dialogStatus=='create'" type="primary" @click="createData">{{ $t('table.confirm') }}</el-button>
         <el-button v-else type="primary" @click="updateData">{{ $t('table.confirm') }}</el-button>
       </div>
-    </el-dialog>
-
-    <el-dialog :visible.sync="dialogPvVisible" title="Reading statistics">
-      <el-table :data="pvData" border fit highlight-current-row style="width: 100%">
-        <el-table-column prop="key" label="Channel"/>
-        <el-table-column prop="pv" label="Pv"/>
-      </el-table>
-      <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="dialogPvVisible = false">{{ $t('table.confirm') }}</el-button>
-      </span>
     </el-dialog>
 
   </div>

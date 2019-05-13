@@ -88,6 +88,46 @@ export function deleteGoods(goodsId) {
   })
 }
 
+export function fetchCouponList(query) {
+  return request({
+    url: '/v1/mall/coupon/page',
+    method: 'get',
+    params: query
+  })
+}
+
+export function fetchCoupon(goodsId) {
+  return request({
+    url: '/v1/mall/coupon/',
+    method: 'get',
+    params: { goodsId }
+  })
+}
+
+export function createCoupon(data) {
+  return request({
+    url: '/v1/mall/coupon',
+    method: 'post',
+    data
+  })
+}
+
+export function updateCoupon(data) {
+  return request({
+    url: '/v1/mall/coupon',
+    method: 'put',
+    data
+  })
+}
+
+export function deleteCoupon(couponId) {
+  return request({
+    url: '/v1/mall/coupon/' + couponId,
+    method: 'delete',
+    couponId
+  })
+}
+
 export function fetchSaleOrderList(query) {
   return request({
     url: '/v1/mall/sale/order/page',

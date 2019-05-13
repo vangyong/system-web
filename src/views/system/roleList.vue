@@ -25,7 +25,7 @@
       </el-table-column>
       <el-table-column :label="$t('role.locked')" class-name="status-col" width="150">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.locked">{{ scope.row.locked | lockedFilter }}</el-tag>
+          <el-tag>{{ scope.row.locked | lockedFilter }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column :label="$t('role.createTime')" width="200" align="center">

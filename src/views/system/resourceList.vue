@@ -28,9 +28,9 @@
           <span>{{ scope.row.description }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('resource.hide')" class-name="status-col" width="50">
+      <el-table-column :label="$t('resource.hide')" class-name="status-col" width="80">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.hide">{{ scope.row.hide | hideFilter }}</el-tag>
+          <el-tag>{{ scope.row.hide | hideFilter }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column :label="$t('resource.createTime')" width="150" align="center">
