@@ -19,7 +19,9 @@
       </el-table-column>
       <el-table-column :label="$t('goods.goodsName')" width="200" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.goodsName }}</span>
+          <router-link :to="'/mall/goods/edit/'+scope.row.goodsId" class="link-type">
+            <span>{{ scope.row.goodsName }}</span>
+          </router-link>
         </template>
       </el-table-column>
       <el-table-column :label="$t('goods.status')" class-name="status-col" width="100">
@@ -46,8 +48,12 @@
       <el-table-column :label="$t('table.actions')" align="center" width="160" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="handleExamine(scope.row)">{{ $t('goods.examine') }}</el-button>
+          <router-link :to="'/mall/goods/edit/'+scope.row.goodsId">
+            <el-button type="primary" size="small" icon="el-icon-edit">{{ $t('table.edit') }}</el-button>
+          </router-link>
         </template>
       </el-table-column>
+
     </el-table>
 
     <div class="pagination-container">

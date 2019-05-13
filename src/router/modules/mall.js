@@ -14,13 +14,16 @@ const mallRouter = {
       path: 'goods',
       component: () => import('@/views/mall/goodsList'),
       name: 'goods',
-      meta: { title: 'goods' }
-    },
-    {
-      path: 'member',
-      component: () => import('@/views/mall/memberList'),
-      name: 'member',
-      meta: { title: 'member' }
+      meta: { title: 'goods' },
+      children: [
+        {
+          path: 'edit/:id(\\d+)',
+          component: () => import('@/views/mall/goodsEdit'),
+          name: 'EditGoods',
+          meta: { title: 'editGoods', noCache: true },
+          hidden: true
+        }
+      ]
     },
     {
       path: 'product',

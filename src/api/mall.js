@@ -48,11 +48,11 @@ export function fetchGoodsList(query) {
   })
 }
 
-export function fetchGoods(id) {
+export function fetchGoods(goodsId) {
   return request({
     url: '/v1/mall/goods/',
     method: 'get',
-    params: { id }
+    params: { goodsId }
   })
 }
 
