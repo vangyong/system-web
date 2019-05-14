@@ -13,6 +13,7 @@ export default {
     resource: '资源管理',
     tenant: '租户管理',
     mall: '商城管理',
+    category: '类别管理',
     goods: '商品管理',
     createGoods: '创建商品',
     editGoods: '编辑商品',
@@ -20,6 +21,7 @@ export default {
     member: '会员管理',
     product: '产品管理',
     coupon: '优惠券管理',
+    saleAccount: '卖家账户',
     saleOrder: '卖家订单',
     icons: '图标',
     components: '组件',
@@ -242,6 +244,21 @@ export default {
     mainProduct: '主营产品',
     examine: '审核'
   },
+  category: {
+    categoryId: '商品id',
+    categoryName: '商品名称',
+    rank: '类别',
+    iconUrl: '类别图标',
+    parentId: '父级类别',
+    sortNumber: '排序号',
+    status: '状态',
+    status_0: '弃用',
+    status_1: '使用',
+    description: '描述',
+    createTime: '创建时间',
+    deleteStatus: '删除状态',
+    channelId: '频道id'
+  },
   goods: {
     goodsId: '商品id',
     goodsName: '商品名称',
@@ -273,6 +290,19 @@ export default {
     useEndDate: '过期使用时间',
     minGoodsMoney: '最低金额使用',
     tenantId: '审核'
+  },
+  saleAccount: {
+    saleAccountId: '卖家账户',
+    amountMoney: '总金额',
+    amountIntegral: '总积分',
+    userId: '用户',
+    status: '状态',
+    status_0: '禁用',
+    status_1: '启用',
+    grade: '等级',
+    createTime: '创建时间',
+    updateTime: '更新时间',
+    deleteStatus: '删除状态'
   },
   saleOrder: {
     saleOrderId: '订单id',

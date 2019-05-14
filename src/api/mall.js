@@ -1,42 +1,42 @@
 import request from '@/utils/request'
 
-export function fetchList(query) {
+export function fetchCategoryList(query) {
   return request({
-    url: '/article/list',
+    url: '/v1/mall/category/page',
     method: 'get',
     params: query
   })
 }
 
-export function fetchArticle(id) {
+export function fetchCategory(categoryId) {
   return request({
-    url: '/article/detail',
+    url: '/v1/mall/category',
     method: 'get',
-    params: { id }
+    params: { categoryId }
   })
 }
 
-export function fetchPv(pv) {
+export function createCategory(data) {
   return request({
-    url: '/article/pv',
-    method: 'get',
-    params: { pv }
-  })
-}
-
-export function createArticle(data) {
-  return request({
-    url: '/article/create',
+    url: '/v1/mall/category',
     method: 'post',
     data
   })
 }
 
-export function updateArticle(data) {
+export function updateCategory(data) {
   return request({
-    url: '/article/update',
-    method: 'post',
+    url: '/v1/mall/category',
+    method: 'put',
     data
+  })
+}
+
+export function deleteCategory(couponId) {
+  return request({
+    url: '/v1/mall/category/' + couponId,
+    method: 'delete',
+    couponId
   })
 }
 
@@ -128,6 +128,30 @@ export function deleteCoupon(couponId) {
   })
 }
 
+export function fetchSaleAccountList(query) {
+  return request({
+    url: '/v1/mall/sale/account/page',
+    method: 'get',
+    params: query
+  })
+}
+
+export function fetchSaleAccount(id) {
+  return request({
+    url: '/v1/mall/sale/account/',
+    method: 'get',
+    params: { id }
+  })
+}
+
+export function updateSaleAccount(data) {
+  return request({
+    url: '/v1/mall/sale/account',
+    method: 'put',
+    data
+  })
+}
+
 export function fetchSaleOrderList(query) {
   return request({
     url: '/v1/mall/sale/order/page',
@@ -152,10 +176,3 @@ export function updateSaleOrder(data) {
   })
 }
 
-export function examineSaleOrder(data) {
-  return request({
-    url: '/v1/mall/sale/order/examine',
-    method: 'put',
-    data
-  })
-}

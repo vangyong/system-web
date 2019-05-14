@@ -11,6 +11,12 @@ const mallRouter = {
   },
   children: [
     {
+      path: 'category',
+      component: () => import('@/views/mall/categoryList'),
+      name: 'category',
+      meta: { title: 'category' }
+    },
+    {
       path: 'goods',
       component: () => import('@/views/mall/goodsList'),
       name: 'goods',
@@ -36,6 +42,12 @@ const mallRouter = {
       component: () => import('@/views/mall/couponList'),
       name: 'coupon',
       meta: { title: 'coupon' }
+    },
+    {
+      path: 'saleAccount',
+      component: () => import('@/views/mall/saleAccountList'),
+      name: 'saleAccount',
+      meta: { title: 'saleAccount' }
     },
     {
       path: 'saleOrder',

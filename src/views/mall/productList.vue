@@ -28,7 +28,7 @@
 
       <el-table-column class-name="status-col" label="Status" width="110">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
+          <el-tag>{{ scope.row.status | statusFilter }}</el-tag>
         </template>
       </el-table-column>
 
@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { fetchList } from '@/api/mall'
+import { fetchList } from '@/api/article'
 
 export default {
   name: 'ArticleList',

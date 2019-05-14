@@ -13,6 +13,7 @@ export default {
     resource: 'Resource Manage',
     tenant: 'Tenant Manage',
     mall: 'Mall Manage',
+    category: 'Category Manage',
     goods: 'Goods Manage',
     createGoods: 'Create Goods',
     editGoods: 'Edit Goods',
@@ -20,6 +21,7 @@ export default {
     member: 'Member Manage',
     product: 'Product Manage',
     coupon: 'Coupon Manage',
+    saleAccount: 'Sale Account',
     saleOrder: 'Sale Order',
     icons: 'Icons',
     components: 'Components',
@@ -242,6 +244,21 @@ export default {
     mainProduct: 'Main Product',
     examine: 'Examine'
   },
+  category: {
+    categoryId: 'Category Id',
+    categoryName: 'Category Name',
+    rank: 'Rank',
+    iconUrl: 'Icon Url',
+    parentId: 'Parent Category',
+    sortNumber: 'Sort Number',
+    status: 'Status',
+    status_0: 'No Use',
+    status_1: 'Use Status',
+    description: 'Description',
+    createTime: 'CreateTime',
+    deleteStatus: 'DeleteStatus',
+    channelId: 'Channel Id'
+  },
   goods: {
     goodsId: 'Goods Id',
     goodsName: 'Goods Name',
@@ -274,8 +291,21 @@ export default {
     minGoodsMoney: 'Min GoodsMoney',
     tenantId: 'Tenant Id'
   },
+  saleAccount: {
+    saleAccountId: 'Sale Account',
+    amountMoney: 'Account Money',
+    amountIntegral: 'Amount Integral',
+    userId: 'User',
+    status: 'Status',
+    status_0: 'No Use',
+    status_1: 'Use',
+    grade: 'Grade',
+    createTime: 'Create Time',
+    updateTime: 'Update Time',
+    deleteStatus: 'Delete Status'
+  },
   saleOrder: {
-    saleOrderId: 'SaleOrderid',
+    saleOrderId: 'SaleOrderId',
     saleOrderName: 'SaleOrder Name',
     saleOrderCode: 'SaleOrder Code',
     status: 'Status',
@@ -284,8 +314,8 @@ export default {
     status_2: 'Complete',
     orderMoney: 'Order Money',
     shipFee: 'Ship Fee',
-    createTime: '创建时间',
-    deleteStatus: '删除状态',
-    examine: '审核'
+    createTime: 'Create Time',
+    deleteStatus: 'Delete Status',
+    examine: 'Examine'
   }
 }
