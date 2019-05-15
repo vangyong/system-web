@@ -23,6 +23,7 @@ export default {
     coupon: '优惠券管理',
     saleAccount: '卖家账户',
     saleOrder: '卖家订单',
+    buyAccount: '买家账户',
     icons: '图标',
     components: '组件',
     componentIndex: '介绍',
@@ -317,5 +318,19 @@ export default {
     createTime: '创建时间',
     deleteStatus: '删除状态',
     examine: '审核'
+  },
+  buyAccount: {
+    buyAccountId: '买家账户',
+    amountMoney: '总金额',
+    amountIntegral: '总积分',
+    userId: '用户',
+    status: '状态',
+    status_0: '禁用',
+    status_1: '启用',
+    grade: '等级',
+    createTime: '创建时间',
+    updateTime: '更新时间',
+    deleteStatus: '删除状态',
+    receiveAddressId: '收货地址(默认)'
   }
 }

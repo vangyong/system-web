@@ -54,6 +54,12 @@ const mallRouter = {
       component: () => import('@/views/mall/saleOrderList'),
       name: 'saleOrder',
       meta: { title: 'saleOrder' }
+    },
+    {
+      path: 'buyAccount',
+      component: () => import('@/views/mall/buyAccountList'),
+      name: 'buyAccount',
+      meta: { title: 'buyAccount' }
     }
   ]
 }

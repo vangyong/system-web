@@ -176,3 +176,26 @@ export function updateSaleOrder(data) {
   })
 }
 
+export function fetchBuyAccountList(query) {
+  return request({
+    url: '/v1/mall/buy/account/page',
+    method: 'get',
+    params: query
+  })
+}
+
+export function fetchBuyAccount(id) {
+  return request({
+    url: '/v1/mall/buy/account/',
+    method: 'get',
+    params: { id }
+  })
+}
+
+export function updateBuyAccount(data) {
+  return request({
+    url: '/v1/mall/buy/account',
+    method: 'put',
+    data
+  })
+}

@@ -23,6 +23,7 @@ export default {
     coupon: 'Coupon Manage',
     saleAccount: 'Sale Account',
     saleOrder: 'Sale Order',
+    buyAccount: 'Buy Account',
     icons: 'Icons',
     components: 'Components',
     componentIndex: 'Introduction',
@@ -317,5 +318,19 @@ export default {
     createTime: 'Create Time',
     deleteStatus: 'Delete Status',
     examine: 'Examine'
+  },
+  buyAccount: {
+    buyAccountId: 'Sale Account',
+    amountMoney: 'Account Money',
+    amountIntegral: 'Amount Integral',
+    userId: 'User',
+    status: 'Status',
+    status_0: 'No Use',
+    status_1: 'Use',
+    grade: 'Grade',
+    createTime: 'Create Time',
+    updateTime: 'Update Time',
+    deleteStatus: 'Delete Status',
+    receiveAddressId: 'Receive Address(default)'
   }
 }
