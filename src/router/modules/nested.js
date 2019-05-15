@@ -14,7 +14,7 @@ const nestedRouter = {
   children: [
     {
       path: 'menu1',
-      component: () => import('@/views/nested/menu1/index'), // Parent router-view
+      component: () => import('@/views/nested/menu1/index'),
       name: 'Menu1',
       meta: { title: 'menu1' },
       redirect: '/nested/menu1/menu1-1',
