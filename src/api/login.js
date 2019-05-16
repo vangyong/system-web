@@ -22,7 +22,7 @@ export function loginByUsername(username, password) {
     'password': password
   }
   const options = {
-    method: 'POST',
+    method: 'post',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
       'Authorization': 'Basic ' + Base64.encode('system:system')
@@ -53,8 +53,8 @@ export function getUserInfo(token) {
     method: 'get',
     headers: {
       'Authorization': 'bearer ' + token
-    },
-    params: { user_name }
+    }/*,
+    params: { user_name }*/
   })
 }
 
