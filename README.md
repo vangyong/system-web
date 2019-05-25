@@ -148,7 +148,5 @@ Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/gui
 
 
 ## License
-
 [MIT]
-
 Copyright (c) 2019-present www.fengtuwei.com
