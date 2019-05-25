@@ -2,7 +2,7 @@
 
 ## 简介
 
-[system_web] 是一个后台集成解决方案，它基于 [vue](https://github.com/vuejs/vue) 和 [element](https://github.com/ElemeFE/element)。内置了 i18 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以快速搭建企业级中后台产品原型。
+[system_web] 是一个后台管理系统集成解决方案，它基于 [vue](https://github.com/vuejs/vue) 和 [element](https://github.com/ElemeFE/element)。内置了 i18 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以快速搭建企业级中后台产品原型。
 
 
 **本项目的定位是后台集成方案，不适合当基础模板来开发。**
