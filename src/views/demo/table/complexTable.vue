@@ -58,7 +58,7 @@
       </el-table-column>
       <el-table-column :label="$t('table.readings')" align="center" width="95">
         <template slot-scope="scope">
-          <span v-if="scope.row.pageviews" class="link-type" @click="handleFetchPv(scope.row.pageviews)">{{ scope.row.pageviews }}</span>
+          <span v-if="scope.row.pageviews" class="link-type" @click="handleFetchArticlePv(scope.row.pageviews)">{{ scope.row.pageviews }}</span>
           <span v-else>0</span>
         </template>
       </el-table-column>
@@ -130,7 +130,7 @@
 </template>
 
 <script>
-import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
+import { fetchList, fetchArticlePv, createArticle, updateArticle } from '@/api/article'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 
@@ -324,8 +324,8 @@ export default {
       const index = this.list.indexOf(row)
       this.list.splice(index, 1)
     },
-    handleFetchPv(pv) {
-      fetchPv(pv).then(response => {
+    handleFetchArticlePv(pv) {
+      fetchArticlePv(pv).then(response => {
         this.pvData = response.data.pvData
         this.dialogPvVisible = true
       })

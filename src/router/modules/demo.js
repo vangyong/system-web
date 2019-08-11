@@ -140,36 +140,6 @@ const demoRouter = {
       ]
     },
     {
-      path: 'charts',
-      name: 'Charts',
-      component: () => import('@/views/demo/charts/index'),
-      redirect: 'noredirect',
-      meta: {
-        title: 'charts',
-        icon: 'excel'
-      },
-      children: [
-        {
-          path: 'keyboard',
-          component: () => import('@/views/demo/charts/keyboard'),
-          name: 'KeyboardChart',
-          meta: { title: 'keyboardChart', noCache: true }
-        },
-        {
-          path: 'line',
-          component: () => import('@/views/demo/charts/line'),
-          name: 'LineChart',
-          meta: { title: 'lineChart', noCache: true }
-        },
-        {
-          path: 'mixchart',
-          component: () => import('@/views/demo/charts/mixChart'),
-          name: 'MixChart',
-          meta: { title: 'mixChart', noCache: true }
-        }
-      ]
-    },
-    {
       path: 'table',
       name: 'Table',
       component: () => import('@/views/demo/table/index'),

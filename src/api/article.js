@@ -1,5 +1,6 @@
 import request from '@/utils/request'
 
+// 测试API
 export function fetchList(query) {
   return request({
     url: '/article/list',
@@ -16,7 +17,7 @@ export function fetchArticle(id) {
   })
 }
 
-export function fetchPv(pv) {
+export function fetchArticlePv(pv) {
   return request({
     url: '/article/pv',
     method: 'get',
