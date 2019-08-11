@@ -39,3 +39,11 @@ export function updateArticle(data) {
     data
   })
 }
+
+export function fetchUser(name) {
+  return request({
+    url: '/search/user',
+    method: 'get',
+    params: { name }
+  })
+}

@@ -7,10 +7,6 @@ Vue.use(Router)
 import Layout from '@/views/layout/Layout'
 
 /* Router Modules */
-import componentsRouter from './modules/components'
-import chartsRouter from './modules/charts'
-import tableRouter from './modules/table'
-import nestedRouter from './modules/nested'
 import systemRouter from './modules/system'
 import mallRouter from './modules/mall'
 import demoRouter from './modules/demo'
@@ -103,9 +99,5 @@ export const asyncRouterMap = [
   systemRouter,
   mallRouter,
   demoRouter,
-  componentsRouter,
-  chartsRouter,
-  nestedRouter,
-  tableRouter,
   { path: '*', redirect: '/404', hidden: true }
 ]

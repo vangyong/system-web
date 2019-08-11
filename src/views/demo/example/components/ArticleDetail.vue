@@ -79,10 +79,9 @@ import Upload from '@/components/Upload/singleImage3'
 import MDinput from '@/components/MDinput'
 import Sticky from '@/components/Sticky' // 粘性header组件
 import { validateURL } from '@/utils/validate'
-import { fetchArticle } from '@/api/article'
-import { userSearch } from '@/api/remoteSearch'
+import { fetchArticle, fetchUser } from '@/api/article'
 import Warning from './Warning'
-import { CommentDropdown, PlatformDropdown, SourceUrlDropdown } from './Dropdown'
+import { CommentDropdown, PlatformDropdown, SourceUrlDropdown } from './Dropdown/index'
 
 const defaultForm = {
   status: 'draft',
@@ -207,7 +206,7 @@ export default {
       this.postForm.status = 'draft'
     },
     getRemoteUserList(query) {
-      userSearch(query).then(response => {
+      fetchUser(query).then(response => {
         if (!response.data.items) return
         this.userListOptions = response.data.items.map(v => v.name)
       })

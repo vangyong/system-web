@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import Chart from '@/components/Charts/lineMarker'
+import Chart from '@/components/Charts/keyboard'
 
 export default {
-  name: 'LineChart',
+  name: 'KeyboardChart',
   components: { Chart }
 }
 </script>
@@ -16,7 +16,8 @@ export default {
 <style scoped>
 .chart-container{
   position: relative;
-  width: 100%;
+  /*width: 100%;*/
+  width: 1200px;
   height: calc(100vh - 84px);
 }
 </style>
