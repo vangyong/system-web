@@ -50,6 +50,29 @@ const demoRouter = {
       meta: { title: 'theme', icon: 'theme' }
     },
     {
+      path: 'permission',
+      name: 'Permission',
+      component: () => import('@/views/demo/permission/index'),
+      meta: {
+        title: 'permission',
+        icon: 'excel'
+      },
+      children: [
+        {
+          path: 'page',
+          component: () => import('@/views/demo/permission/page'),
+          name: 'PermissionPage',
+          meta: { title: 'pagePermission' }
+        },
+        {
+          path: 'directive',
+          component: () => import('@/views/demo/permission/directive'),
+          name: 'Permission Directive',
+          meta: { title: 'directivePermission' }
+        }
+      ]
+    },
+    {
       path: 'excel',
       name: 'Excel',
       component: () => import('@/views/demo/excel/index'),
