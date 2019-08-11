@@ -7,7 +7,7 @@
       </el-select>
       <el-input :placeholder="$t('goods.goodsCode')" v-model="listQuery.goodsCode" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">{{ $t('table.search') }}</el-button>
-      <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">{{ $t('table.add') }}</el-button>
+      <!--<el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">{{ $t('table.add') }}</el-button>-->
       <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">{{ $t('table.export') }}</el-button>
     </div>
 
@@ -19,14 +19,14 @@
       </el-table-column>
       <el-table-column :label="$t('goods.goodsName')" width="200" align="center">
         <template slot-scope="scope">
-          <router-link :to="'/mall/goods/edit/'+scope.row.goodsId" class="link-type">
+          <router-link :to="'/mall/goodsEdit/'+scope.row.goodsId" class="link-type">
             <span>{{ scope.row.goodsName }}</span>
           </router-link>
         </template>
       </el-table-column>
       <el-table-column :label="$t('goods.status')" class-name="status-col" width="100">
         <template slot-scope="scope">
-          <el-tag>{{ scope.row.deleteStatus | statusFilter }}</el-tag>
+          <el-tag>{{ scope.row.status | statusFilter }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column :label="$t('goods.brief')" width="200" align="center">
@@ -49,9 +49,6 @@
         <template slot-scope="scope">
           <el-button type="success" size="mini" @click="handleExamine(scope.row)">{{ $t('goods.examine') }}</el-button>
           <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">{{ $t('table.edit') }}</el-button>
-          <!--<router-link :to="'/mall/goods/edit/'+scope.row.goodsId">-->
-          <!--<el-button type="primary" size="small" icon="el-icon-edit">{{ $t('table.edit') }}</el-button>-->
-          <!--</router-link>-->
         </template>
       </el-table-column>
     </el-table>
@@ -63,10 +60,10 @@
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="120px" style="width: 400px; margin-left:50px;">
         <el-form-item :label="$t('goods.goodsName')" prop="goodsName">
-          <el-input :placeholder="$t('goods.goodsName')" v-model="temp.goodsName" style="width: 200px;" class="filter-item"/>
+          <el-input :placeholder="$t('goods.goodsName')" v-model="temp.goodsName" readonly="true" style="width: 200px;" class="filter-item"/>
         </el-form-item>
         <el-form-item :label="$t('goods.goodsCode')" prop="goodsCode">
-          <el-input :placeholder="$t('goods.goodsCode')" v-model="temp.goodsCode" style="width: 200px;" class="filter-item"/>
+          <el-input :placeholder="$t('goods.goodsCode')" v-model="temp.goodsCode" readonly="true" style="width: 200px;" class="filter-item"/>
         </el-form-item>
         <el-form-item :label="$t('goods.status')" prop="status">
           <el-select :placeholder="$t('goods.status')" v-model="temp.status" class="filter-item" >
@@ -78,13 +75,15 @@
             <el-option v-for="item in deleteStatusOptions" :key="item.key" :label="item.display_name" :value="item.key"/>
           </el-select>
         </el-form-item>
+        <el-form-item :label="$t('goods.brief')" prop="brief">
+          <el-input :placeholder="$t('goods.brief')" v-model="temp.brief" readonly="true" style="width: 200px;" class="filter-item"/>
+        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">{{ $t('table.cancel') }}</el-button>
         <el-button v-if="dialogStatus=='create'" type="primary" @click="createData">{{ $t('table.confirm') }}</el-button>
         <el-button v-if="dialogStatus=='update'" type="primary" @click="updateData">{{ $t('table.confirm') }}</el-button>
         <el-button v-if="dialogStatus=='examine'" type="primary" @click="examineData">{{ $t('table.confirm') }}</el-button>
-        <!--<el-button v-else type="primary" @click="updateData">{{ $t('table.confirm') }}</el-button>-->
       </div>
     </el-dialog>
 
@@ -92,7 +91,7 @@
 </template>
 
 <script>
-import { fetchGoodsList, createGoods, updateGoods, examineGoods, deleteGoods } from '@/api/mall'
+import { fetchGoodsPage, createGoods, updateGoods, examineGoods, deleteGoods } from '@/api/mall'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 import { formatDate } from '@/utils/date'
@@ -142,8 +141,8 @@ export default {
         page: 1,
         limit: 20,
         goodsName: undefined,
-        gender: undefined,
-        mobileNumber: undefined,
+        status: undefined,
+        goodsCode: undefined,
         sort: undefined
       },
       statusOptions: [
@@ -162,11 +161,10 @@ export default {
       temp: {
         goodsId: undefined,
         goodsName: undefined,
-        nickName: undefined,
-        mobileNumber: undefined,
-        password: undefined,
-        gender: 0,
-        deletStatus: 0
+        goodsCode: undefined,
+        status: undefined,
+        brief: undefined,
+        deleteStatus: 0
       },
       dialogFormVisible: false,
       dialogStatus: '',
@@ -175,8 +173,6 @@ export default {
         update: this.$t('form.update'),
         examine: this.$t('form.examine')
       },
-      dialogPvVisible: false,
-      pvData: [],
       rules: {
         type: [{ required: true, message: 'type is required', trigger: 'change' }],
         timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
@@ -191,7 +187,7 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      fetchGoodsList(this.listQuery).then(response => {
+      fetchGoodsPage(this.listQuery).then(response => {
         this.list = response.data.content
         this.total = response.data.totalElements
         setTimeout(() => {
@@ -215,7 +211,6 @@ export default {
       this.temp = {
         goodsId: undefined,
         goodsName: undefined,
-        mobileNumber: undefined,
         status: 0,
         deleteStatus: 0
       }

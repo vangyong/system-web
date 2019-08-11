@@ -100,16 +100,6 @@ import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 import { formatDate } from '@/utils/date'
 
-// const genderOptions = [
-//   { key: '1', display_name: '男' },
-//   { key: '0', display_name: '女' }
-// ]
-//
-// const genderKeyValue = genderOptions.reduce((acc, cur) => {
-//   acc[cur.key] = cur.display_name
-//   return acc
-// }, {})
-
 export default {
   name: 'UserList',
   directives: {
@@ -118,15 +108,16 @@ export default {
   filters: {
     deleteStatusFilter(status) {
       const deleteStatusMap = {
-        0: '未删除',
-        1: '已删除'
+        1: '已删除',
+        2: '未删除'
       }
       return deleteStatusMap[status]
     },
     genderFilter(gender) {
       const genderMap = {
         1: '男',
-        0: '女'
+        2: '女',
+        3: '保密'
       }
       return genderMap[gender]
       // return genderKeyValue[gender]
@@ -153,11 +144,12 @@ export default {
       },
       genderOptions: [
         { key: 1, display_name: this.$t('user.gender_male') },
-        { key: 0, display_name: this.$t('user.gender_female') }
+        { key: 2, display_name: this.$t('user.gender_female') },
+        { key: 3, display_name: this.$t('user.gender_secret') }
       ],
       deleteStatusOptions: [
         { key: 1, display_name: this.$t('form.deleteStatus_deleted') },
-        { key: 0, display_name: this.$t('form.deleteStatus_nodelete') }
+        { key: 2, display_name: this.$t('form.deleteStatus_undelete') }
       ],
       showReviewer: false,
       temp: {

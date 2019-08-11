@@ -1,50 +1,47 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input :placeholder="$t('buyAccount.userId')" v-model="listQuery.userId" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
-      <el-select v-model="listQuery.status" :placeholder="$t('buyAccount.status')" clearable class="filter-item" style="width: 130px">
+      <el-input :placeholder="$t('sellerOrder.sellerOrderName')" v-model="listQuery.sellerOrderName" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
+      <el-select v-model="listQuery.status" :placeholder="$t('sellerOrder.status')" clearable class="filter-item" style="width: 130px">
         <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key"/>
       </el-select>
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">{{ $t('table.search') }}</el-button>
+      <!--<el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">{{ $t('table.add') }}</el-button>-->
       <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">{{ $t('table.export') }}</el-button>
     </div>
 
     <el-table v-loading="listLoading" :key="tableKey" :data="list" border fit highlight-current-row style="width: 100%;">
-      <el-table-column :label="$t('buyAccount.buyAccountId')" width="200" align="center">
+      <el-table-column :label="$t('sellerOrder.sellerOrderName')" width="200" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.buyAccountId }}</span>
+          <span>{{ scope.row.sellerOrderName }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('buyAccount.amountMoney')" width="100" align="center">
+      <el-table-column :label="$t('sellerOrder.sellerOrderCode')" width="200" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.amountMoney }}</span>
+          <span>{{ scope.row.sellerOrderCode }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('buyAccount.amountIntegral')" width="100" align="center">
+      <el-table-column :label="$t('sellerOrder.status')" class-name="status-col" width="150">
         <template slot-scope="scope">
-          <span>{{ scope.row.amountIntegral }}</span>
+          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('buyAccount.status')" class-name="status-col" width="100">
+      <el-table-column :label="$t('sellerOrder.orderMoney')" width="200" align="center">
         <template slot-scope="scope">
-          <el-tag>{{ scope.row.status| statusFilter }}</el-tag>
+          <span>{{ scope.row.orderMoney }}</span>
         </template>
       </el-table-column>
-
-      <el-table-column :label="$t('buyAccount.userId')" width="200" align="center">
+      <el-table-column :label="$t('sellerOrder.shipFee')" width="200" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.userId }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column :label="$t('buyAccount.grade')" width="200" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.grade }}</span>
+          <span>{{ scope.row.shipFee }}</span>
         </template>
       </el-table-column>
 
       <el-table-column :label="$t('table.actions')" align="center" width="160" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">{{ $t('table.edit') }}</el-button>
+          <el-button v-if="scope.row.deleteStatus!= 1" size="mini" type="danger" @click="handleModifyStatus(scope.row,'deleted')">{{ $t('table.delete') }}
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -55,20 +52,18 @@
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
-        <el-form-item :label="$t('buyAccount.status')" prop="status">
+        <el-form-item :label="$t('sellerOrder.status')" prop="status">
           <el-select v-model="temp.status" class="filter-item" placeholder="Please select">
             <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name" :value="item.key"/>
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('buyAccount.amountMoney')" prop="amountMoney">
-          <el-input :placeholder="$t('buyAccount.amountMoney')" v-model="temp.amountMoney" style="width: 200px;" class="filter-item"/>
+        <el-form-item :label="$t('sellerOrder.orderMoney')" prop="orderMoney">
+          <el-input :placeholder="$t('sellerOrder.orderMoney')" v-model="temp.orderMoney" style="width: 200px;" class="filter-item"/>
         </el-form-item>
-        <el-form-item :label="$t('buyAccount.amountIntegral')" prop="amountIntegral">
-          <el-input :placeholder="$t('buyAccount.amountIntegral')" v-model="temp.amountIntegral" style="width: 200px;" class="filter-item"/>
+        <el-form-item :label="$t('sellerOrder.shipFee')" prop="shipFee">
+          <el-input :placeholder="$t('sellerOrder.shipFee')" v-model="temp.shipFee" style="width: 200px;" class="filter-item"/>
         </el-form-item>
-        <el-form-item :label="$t('buyAccount.grade')" prop="grade">
-          <el-input :placeholder="$t('buyAccount.grade')" v-model="temp.grade" style="width: 200px;" class="filter-item"/>
-        </el-form-item>
+
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">{{ $t('table.cancel') }}</el-button>
@@ -81,20 +76,20 @@
 </template>
 
 <script>
-import { fetchBuyAccountList, updateBuyAccount } from '@/api/mall'
+import { fetchSellerOrderList, updateSaleOrder } from '@/api/mall'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 
 export default {
-  name: 'BuyAccountList',
+  name: 'SellerOrderList',
   directives: {
     waves
   },
   filters: {
     statusFilter(status) {
       const statusMap = {
-        0: '禁用',
-        1: '启用'
+        0: '未删除',
+        1: '已删除'
       }
       return statusMap[status]
     }
@@ -108,21 +103,22 @@ export default {
       listQuery: {
         page: 1,
         limit: 20,
-        importance: undefined,
-        title: undefined,
-        type: undefined,
+        sellerOrderName: undefined,
+        status: undefined,
         sort: undefined
       },
       statusOptions: [
-        { key: 0, display_name: this.$t('buyAccount.status_0') },
-        { key: 1, display_name: this.$t('buyAccount.status_1') }
+        { key: 1, display_name: this.$t('sellerOrder.status_1') },
+        { key: 2, display_name: this.$t('sellerOrder.status_2') },
+        { key: 3, display_name: this.$t('sellerOrder.status_3') }
       ],
       showReviewer: false,
       temp: {
-        buyAccountId: undefined,
-        amountMoney: undefined,
-        amountIntegral: undefined,
-        grade: undefined,
+        id: undefined,
+        remark: '',
+        timestamp: new Date(),
+        title: '',
+        type: '',
         status: 0
       },
       dialogFormVisible: false,
@@ -131,8 +127,11 @@ export default {
         update: 'Edit',
         create: 'Create'
       },
+      dialogPvVisible: false,
+      pvData: [],
       rules: {
-        status: [{ required: true, message: 'status is required', trigger: 'change' }],
+        type: [{ required: true, message: 'type is required', trigger: 'change' }],
+        timestamp: [{ type: 'date', required: true, message: 'timestamp is required', trigger: 'change' }],
         title: [{ required: true, message: 'title is required', trigger: 'blur' }]
       },
       downloadLoading: false
@@ -144,7 +143,7 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      fetchBuyAccountList(this.listQuery).then(response => {
+      fetchSellerOrderList(this.listQuery).then(response => {
         this.list = response.data.content
         this.total = response.data.totalElements
         setTimeout(() => {
@@ -173,15 +172,17 @@ export default {
     },
     resetTemp() {
       this.temp = {
-        buyAccountId: undefined,
-        amountMoney: undefined,
-        amountIntegral: undefined,
-        grade: undefined,
-        status: 0
+        id: undefined,
+        importance: 1,
+        remark: '',
+        timestamp: new Date(),
+        title: '',
+        status: 'published',
+        type: ''
       }
     },
     handleUpdate(row) {
-      this.temp = Object.assign({}, row)
+      this.temp = Object.assign({}, row) // copy obj
       this.temp.timestamp = new Date(this.temp.timestamp)
       this.dialogStatus = 'update'
       this.dialogFormVisible = true
@@ -194,7 +195,7 @@ export default {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
           tempData.timestamp = +new Date(tempData.timestamp)
-          updateBuyAccount(tempData).then(() => {
+          updateSaleOrder(tempData).then(() => {
             for (const v of this.list) {
               if (v.id === this.temp.id) {
                 const index = this.list.indexOf(v)

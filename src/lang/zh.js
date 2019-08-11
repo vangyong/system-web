@@ -17,9 +17,9 @@ export default {
     goodsList: '商品列表',
     product: '产品管理',
     coupon: '优惠券管理',
-    saleAccount: '卖家账户',
-    saleOrder: '卖家订单',
-    buyAccount: '买家账户',
+    sellerAccount: '卖家账户',
+    sellerOrder: '卖家订单',
+    buyerAccount: '买家账户',
 
     demo: '示例',
     permission: '权限测试页',
@@ -148,13 +148,14 @@ export default {
   form: {
     create: '新增',
     update: '编辑',
+    examine: '审核',
     delete: '删除',
     cancel: '取消',
     save: '保存',
     confirm: '确定',
     deleteStatus: '删除状态',
     deleteStatus_deleted: '已删除',
-    deleteStatus_nodelete: '未删除'
+    deleteStatus_undelete: '未删除'
   },
   errorLog: {
     tips: '请点击右上角bug小图标',
@@ -199,6 +200,7 @@ export default {
     gender: '性别',
     gender_male: '男',
     gender_female: '女',
+    gender_secret: '保密',
     mobileNumber: '手机号',
     createTime: '创建时间',
     deleteStatus: '删除状态'
@@ -232,8 +234,7 @@ export default {
     tenantName: '租户名称',
     tenantCode: '租户编码',
     status: '状态',
-    status_0: '注册',
-    status_1: '待审核',
+    status_1: '注册待审核',
     status_2: '审核未通过',
     status_3: '正常经营',
     status_4: '暂停经营',
@@ -247,9 +248,9 @@ export default {
     examine: '审核'
   },
   category: {
-    categoryId: '商品id',
-    categoryName: '商品名称',
-    rank: '类别',
+    categoryId: '类别id',
+    categoryName: '类别名称',
+    rank: '级别',
     iconUrl: '类别图标',
     parentId: '父级类别',
     sortNumber: '排序号',
@@ -266,8 +267,7 @@ export default {
     goodsName: '商品名称',
     goodsCode: '商品编码',
     status: '状态',
-    status_0: '编辑',
-    status_1: '待审核',
+    status_1: '编辑待审核',
     status_2: '审核未通过',
     status_3: '正在销售',
     status_4: '下架',
@@ -293,8 +293,8 @@ export default {
     minGoodsMoney: '最低金额使用',
     tenantId: '审核'
   },
-  saleAccount: {
-    saleAccountId: '卖家账户',
+  sellerAccount: {
+    sellerAccountId: '卖家账户',
     amountMoney: '总金额',
     amountIntegral: '总积分',
     userId: '用户',
@@ -306,28 +306,28 @@ export default {
     updateTime: '更新时间',
     deleteStatus: '删除状态'
   },
-  saleOrder: {
-    saleOrderId: '订单id',
-    saleOrderName: '订单名称',
-    saleOrderCode: '订单编码',
+  sellerOrder: {
+    sellerOrderId: '订单id',
+    sellerOrderName: '订单名称',
+    sellerOrderCode: '订单编码',
     status: '状态',
-    status_0: '未发货',
-    status_1: '已发货',
-    status_2: '已完成',
+    status_1: '未发货',
+    status_2: '已发货',
+    status_3: '已完成',
     orderMoney: '金额',
     shipFee: '运费',
     createTime: '创建时间',
     deleteStatus: '删除状态',
     examine: '审核'
   },
-  buyAccount: {
-    buyAccountId: '买家账户',
+  buyerAccount: {
+    buyerAccountId: '买家账户',
     amountMoney: '总金额',
     amountIntegral: '总积分',
     userId: '用户',
     status: '状态',
-    status_0: '禁用',
     status_1: '启用',
+    status_2: '禁用',
     grade: '等级',
     createTime: '创建时间',
     updateTime: '更新时间',

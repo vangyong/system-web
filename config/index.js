@@ -19,6 +19,7 @@ module.exports = {
     // if you want dev by ip, please set host: '0.0.0.0'
     host: '0.0.0.0',
     port: 11001,
+    assetsPublicPath: '/',
     autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: false,

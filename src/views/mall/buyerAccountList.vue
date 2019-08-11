@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input :placeholder="$t('saleAccount.userId')" v-model="listQuery.userId" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
-      <el-select v-model="listQuery.status" :placeholder="$t('saleAccount.status')" clearable class="filter-item" style="width: 130px">
+      <el-input :placeholder="$t('buyerAccount.userId')" v-model="listQuery.userId" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
+      <el-select v-model="listQuery.status" :placeholder="$t('buyerAccount.status')" clearable class="filter-item" style="width: 130px">
         <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key"/>
       </el-select>
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">{{ $t('table.search') }}</el-button>
@@ -10,33 +10,33 @@
     </div>
 
     <el-table v-loading="listLoading" :key="tableKey" :data="list" border fit highlight-current-row style="width: 100%;">
-      <el-table-column :label="$t('saleAccount.saleAccountId')" width="200" align="center">
+      <el-table-column :label="$t('buyerAccount.buyerAccountId')" width="200" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.saleAccountId }}</span>
+          <span>{{ scope.row.buyerAccountId }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('saleAccount.amountMoney')" width="100" align="center">
+      <el-table-column :label="$t('buyerAccount.amountMoney')" width="100" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.amountMoney }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('saleAccount.amountIntegral')" width="100" align="center">
+      <el-table-column :label="$t('buyerAccount.amountIntegral')" width="100" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.amountIntegral }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('saleAccount.status')" class-name="status-col" width="100">
+      <el-table-column :label="$t('buyerAccount.status')" class-name="status-col" width="100">
         <template slot-scope="scope">
           <el-tag>{{ scope.row.status| statusFilter }}</el-tag>
         </template>
       </el-table-column>
 
-      <el-table-column :label="$t('saleAccount.userId')" width="200" align="center">
+      <el-table-column :label="$t('buyerAccount.userId')" width="200" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.userId }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('saleAccount.grade')" width="200" align="center">
+      <el-table-column :label="$t('buyerAccount.grade')" width="200" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.grade }}</span>
         </template>
@@ -55,19 +55,19 @@
 
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
-        <el-form-item :label="$t('saleAccount.status')" prop="status">
+        <el-form-item :label="$t('buyerAccount.status')" prop="status">
           <el-select v-model="temp.status" class="filter-item" placeholder="Please select">
             <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name" :value="item.key"/>
           </el-select>
         </el-form-item>
-        <el-form-item :label="$t('saleAccount.amountMoney')" prop="amountMoney">
-          <el-input :placeholder="$t('saleAccount.amountMoney')" v-model="temp.amountMoney" style="width: 200px;" class="filter-item"/>
+        <el-form-item :label="$t('buyerAccount.amountMoney')" prop="amountMoney">
+          <el-input :placeholder="$t('buyerAccount.amountMoney')" v-model="temp.amountMoney" style="width: 200px;" class="filter-item"/>
         </el-form-item>
-        <el-form-item :label="$t('saleAccount.amountIntegral')" prop="amountIntegral">
-          <el-input :placeholder="$t('saleAccount.amountIntegral')" v-model="temp.amountIntegral" style="width: 200px;" class="filter-item"/>
+        <el-form-item :label="$t('buyerAccount.amountIntegral')" prop="amountIntegral">
+          <el-input :placeholder="$t('buyerAccount.amountIntegral')" v-model="temp.amountIntegral" style="width: 200px;" class="filter-item"/>
         </el-form-item>
-        <el-form-item :label="$t('saleAccount.grade')" prop="grade">
-          <el-input :placeholder="$t('saleAccount.grade')" v-model="temp.grade" style="width: 200px;" class="filter-item"/>
+        <el-form-item :label="$t('buyerAccount.grade')" prop="grade">
+          <el-input :placeholder="$t('buyerAccount.grade')" v-model="temp.grade" style="width: 200px;" class="filter-item"/>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -81,12 +81,12 @@
 </template>
 
 <script>
-import { fetchSaleAccountList, updateSaleAccount } from '@/api/mall'
+import { fetchBuyerAccountList, updateBuyAccount } from '@/api/mall'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 
 export default {
-  name: 'SaleAccountList',
+  name: 'BuyAccountList',
   directives: {
     waves
   },
@@ -114,12 +114,12 @@ export default {
         sort: undefined
       },
       statusOptions: [
-        { key: 0, display_name: this.$t('saleAccount.status_0') },
-        { key: 1, display_name: this.$t('saleAccount.status_1') }
+        { key: 1, display_name: this.$t('buyerAccount.status_1') },
+        { key: 2, display_name: this.$t('buyerAccount.status_2') }
       ],
       showReviewer: false,
       temp: {
-        saleAccountId: undefined,
+        buyerAccountId: undefined,
         amountMoney: undefined,
         amountIntegral: undefined,
         grade: undefined,
@@ -144,7 +144,7 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      fetchSaleAccountList(this.listQuery).then(response => {
+      fetchBuyerAccountList(this.listQuery).then(response => {
         this.list = response.data.content
         this.total = response.data.totalElements
         setTimeout(() => {
@@ -173,7 +173,7 @@ export default {
     },
     resetTemp() {
       this.temp = {
-        saleAccountId: undefined,
+        buyerAccountId: undefined,
         amountMoney: undefined,
         amountIntegral: undefined,
         grade: undefined,
@@ -194,7 +194,7 @@ export default {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
           tempData.timestamp = +new Date(tempData.timestamp)
-          updateSaleAccount(tempData).then(() => {
+          updateBuyAccount(tempData).then(() => {
             for (const v of this.list) {
               if (v.id === this.temp.id) {
                 const index = this.list.indexOf(v)

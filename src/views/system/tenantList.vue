@@ -98,15 +98,14 @@ export default {
   filters: {
     deleteStatusFilter(status) {
       const deleteStatusMap = {
-        0: '未删除',
-        1: '已删除'
+        1: '已删除',
+        2: '未删除'
       }
       return deleteStatusMap[status]
     },
     statusFilter(status) {
       const statusMap = {
-        0: '注册',
-        1: '待审核',
+        1: '注册待审核',
         2: '审核未通过',
         3: '正常经营',
         4: '暂停经营',
@@ -135,7 +134,6 @@ export default {
         sort: undefined
       },
       statusOptions: [
-        { key: 0, display_name: this.$t('tenant.status_0') },
         { key: 1, display_name: this.$t('tenant.status_1') },
         { key: 2, display_name: this.$t('tenant.status_2') },
         { key: 3, display_name: this.$t('tenant.status_3') },
@@ -144,17 +142,13 @@ export default {
       ],
       deleteStatusOptions: [
         { key: 1, display_name: this.$t('form.deleteStatus_deleted') },
-        { key: 0, display_name: this.$t('form.deleteStatus_nodelete') }
+        { key: 2, display_name: this.$t('form.deleteStatus_undelete') }
       ],
       showReviewer: false,
       temp: {
         tenantId: undefined,
         tenantName: undefined,
-        nickName: undefined,
-        mobileNumber: undefined,
-        password: undefined,
-        gender: 0,
-        deletStatus: 0
+        deletStatus: 2
       },
       dialogFormVisible: false,
       dialogStatus: '',

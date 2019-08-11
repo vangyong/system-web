@@ -3,7 +3,6 @@ import Layout from '@/views/layout/Layout'
 const mallRouter = {
   path: '/mall',
   component: Layout,
-  redirect: '/mall/complex-table',
   name: 'mall',
   meta: {
     title: 'mall',
@@ -20,22 +19,14 @@ const mallRouter = {
       path: 'goods',
       component: () => import('@/views/mall/goodsList'),
       name: 'goods',
-      meta: { title: 'goods' },
-      children: [
-        {
-          path: 'edit/:id(\\d+)',
-          component: () => import('@/views/mall/goodsEdit'),
-          name: 'EditGoods',
-          meta: { title: 'editGoods', noCache: true },
-          hidden: true
-        }
-      ]
+      meta: { title: 'goods' }
     },
     {
-      path: 'product',
-      component: () => import('@/views/mall/productList'),
-      name: 'product',
-      meta: { title: 'product' }
+      path: 'goodsEdit/:id(\\d+)',
+      component: () => import('@/views/mall/goodsEdit'),
+      name: 'goodsEdit',
+      meta: { title: 'goodsEdit', noCache: true },
+      hidden: true
     },
     {
       path: 'coupon',
@@ -44,22 +35,22 @@ const mallRouter = {
       meta: { title: 'coupon' }
     },
     {
-      path: 'saleAccount',
-      component: () => import('@/views/mall/saleAccountList'),
-      name: 'saleAccount',
-      meta: { title: 'saleAccount' }
+      path: 'sellerAccount',
+      component: () => import('@/views/mall/sellerAccountList'),
+      name: 'sellerAccount',
+      meta: { title: 'sellerAccount' }
     },
     {
-      path: 'saleOrder',
-      component: () => import('@/views/mall/saleOrderList'),
-      name: 'saleOrder',
-      meta: { title: 'saleOrder' }
+      path: 'sellerOrder',
+      component: () => import('@/views/mall/sellerOrderList'),
+      name: 'sellerOrder',
+      meta: { title: 'sellerOrder' }
     },
     {
-      path: 'buyAccount',
-      component: () => import('@/views/mall/buyAccountList'),
-      name: 'buyAccount',
-      meta: { title: 'buyAccount' }
+      path: 'buyerAccount',
+      component: () => import('@/views/mall/buyerAccountList'),
+      name: 'buyerAccount',
+      meta: { title: 'buyerAccount' }
     }
   ]
 }
