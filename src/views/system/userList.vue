@@ -158,8 +158,8 @@ export default {
         nickName: undefined,
         mobileNumber: undefined,
         password: undefined,
-        gender: 0,
-        deletStatus: 0
+        gender: 1,
+        deletStatus: 2
       },
       dialogFormVisible: false,
       dialogStatus: '',
@@ -215,8 +215,8 @@ export default {
         nickName: undefined,
         mobileNumber: undefined,
         password: undefined,
-        gender: 0,
-        deleteStatus: 0
+        gender: 1,
+        deleteStatus: 2
       }
     },
     handleCreate() {

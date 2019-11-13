@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input :placeholder="$t('sellerOrder.sellerOrderName')" v-model="listQuery.sellerOrderName" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
+      <el-input :placeholder="$t('sellerOrder.orderName')" v-model="listQuery.orderName" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
       <el-select v-model="listQuery.status" :placeholder="$t('sellerOrder.status')" clearable class="filter-item" style="width: 130px">
         <el-option v-for="item in statusOptions" :key="item.key" :label="item.display_name+'('+item.key+')'" :value="item.key"/>
       </el-select>
@@ -11,19 +11,19 @@
     </div>
 
     <el-table v-loading="listLoading" :key="tableKey" :data="list" border fit highlight-current-row style="width: 100%;">
-      <el-table-column :label="$t('sellerOrder.sellerOrderName')" width="200" align="center">
+      <el-table-column :label="$t('sellerOrder.orderName')" width="200" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.sellerOrderName }}</span>
+          <span>{{ scope.row.orderName }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('sellerOrder.sellerOrderCode')" width="200" align="center">
+      <el-table-column :label="$t('sellerOrder.orderCode')" width="200" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.sellerOrderCode }}</span>
+          <span>{{ scope.row.orderCode }}</span>
         </template>
       </el-table-column>
       <el-table-column :label="$t('sellerOrder.status')" class-name="status-col" width="150">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
+          <el-tag>{{ scope.row.status| statusFilter }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column :label="$t('sellerOrder.orderMoney')" width="200" align="center">
@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import { fetchSellerOrderList, updateSaleOrder } from '@/api/mall'
+import { fetchSellerOrderList, updateSellerOrder } from '@/api/mall'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 
@@ -88,8 +88,9 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        0: '未删除',
-        1: '已删除'
+        1: '未发货',
+        2: '已发货',
+        3: '已完成'
       }
       return statusMap[status]
     }
@@ -119,7 +120,7 @@ export default {
         timestamp: new Date(),
         title: '',
         type: '',
-        status: 0
+        status: 1
       },
       dialogFormVisible: false,
       dialogStatus: '',
@@ -195,7 +196,7 @@ export default {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
           tempData.timestamp = +new Date(tempData.timestamp)
-          updateSaleOrder(tempData).then(() => {
+          updateSellerOrder(tempData).then(() => {
             for (const v of this.list) {
               if (v.id === this.temp.id) {
                 const index = this.list.indexOf(v)

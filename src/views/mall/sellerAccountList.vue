@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { fetchSellerAccountList, updateSaleAccount } from '@/api/mall'
+import { fetchSellerAccountList, updateSellerAccount } from '@/api/mall'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 
@@ -93,8 +93,8 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        0: '禁用',
-        1: '启用'
+        1: '启用',
+        2: '禁用'
       }
       return statusMap[status]
     }
@@ -114,8 +114,8 @@ export default {
         sort: undefined
       },
       statusOptions: [
-        { key: 0, display_name: this.$t('sellerAccount.status_0') },
-        { key: 1, display_name: this.$t('sellerAccount.status_1') }
+        { key: 1, display_name: this.$t('sellerAccount.status_1') },
+        { key: 2, display_name: this.$t('sellerAccount.status_2') }
       ],
       showReviewer: false,
       temp: {
@@ -177,7 +177,7 @@ export default {
         amountMoney: undefined,
         amountIntegral: undefined,
         grade: undefined,
-        status: 0
+        status: 2
       }
     },
     handleUpdate(row) {
@@ -194,7 +194,7 @@ export default {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
           tempData.timestamp = +new Date(tempData.timestamp)
-          updateSaleAccount(tempData).then(() => {
+          updateSellerAccount(tempData).then(() => {
             for (const v of this.list) {
               if (v.id === this.temp.id) {
                 const index = this.list.indexOf(v)

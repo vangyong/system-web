@@ -203,8 +203,8 @@ export default {
     roleCode: 'Role Code',
     description: 'description',
     locked: 'Locked Status',
-    locked_0: 'No Locked',
     locked_1: 'Locked',
+    locked_2: 'No Locked',
     tenant_id: 'Tenant Id',
     createTime: 'Create Time',
     deleteStatus: 'Delete Status'
@@ -247,8 +247,8 @@ export default {
     parentId: 'Parent Category',
     sortNumber: 'Sort Number',
     status: 'Status',
-    status_0: 'No Use',
     status_1: 'Use Status',
+    status_2: 'No Use',
     description: 'Description',
     createTime: 'CreateTime',
     deleteStatus: 'DeleteStatus',
@@ -299,9 +299,9 @@ export default {
     deleteStatus: 'Delete Status'
   },
   sellerOrder: {
-    sellerOrderId: 'SellerOrderId',
-    sellerOrderName: 'SellerOrder Name',
-    sellerOrderCode: 'SellerOrder Code',
+    orderId: 'SellerOrderId',
+    orderName: 'SellerOrder Name',
+    orderCode: 'SellerOrder Code',
     status: 'Status',
     status_1: 'Not Shipped ',
     status_2: 'Shipped',

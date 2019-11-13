@@ -97,7 +97,6 @@ import { parseTime } from '@/utils'
 import { formatDate } from '@/utils/date'
 
 const statusOptions = [
-  { key: 0, display_name: '编辑' },
   { key: 1, display_name: '待审核' },
   { key: 2, display_name: '审核未通过' },
   { key: 3, display_name: '正在销售' },
@@ -117,8 +116,8 @@ export default {
   filters: {
     deleteStatusFilter(status) {
       const deleteStatusMap = {
-        0: '未删除',
-        1: '已删除'
+        1: '已删除',
+        2: '未删除'
       }
       return deleteStatusMap[status]
     },
@@ -146,7 +145,6 @@ export default {
         sort: undefined
       },
       statusOptions: [
-        { key: 0, display_name: this.$t('goods.status_0') },
         { key: 1, display_name: this.$t('goods.status_1') },
         { key: 2, display_name: this.$t('goods.status_2') },
         { key: 3, display_name: this.$t('goods.status_3') },
@@ -155,7 +153,7 @@ export default {
       ],
       deleteStatusOptions: [
         { key: 1, display_name: this.$t('form.deleteStatus_deleted') },
-        { key: 0, display_name: this.$t('form.deleteStatus_nodelete') }
+        { key: 2, display_name: this.$t('form.deleteStatus_undelete') }
       ],
       showReviewer: false,
       temp: {
@@ -211,8 +209,8 @@ export default {
       this.temp = {
         goodsId: undefined,
         goodsName: undefined,
-        status: 0,
-        deleteStatus: 0
+        status: 2,
+        deleteStatus: 2
       }
     },
     handleCreate() {

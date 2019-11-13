@@ -85,8 +85,8 @@ export default {
   filters: {
     lockedFilter(status) {
       const lockedMap = {
-        0: '未锁',
-        1: '已锁'
+        1: '已锁',
+        2: '未锁'
       }
       return lockedMap[status]
     }
@@ -104,14 +104,14 @@ export default {
         sort: undefined
       },
       lockedOptions: [
-        { key: 0, display_name: this.$t('role.locked_0') },
-        { key: 1, display_name: this.$t('role.locked_1') }],
+        { key: 1, display_name: this.$t('role.locked_1') },
+        { key: 2, display_name: this.$t('role.locked_2') }],
       temp: {
         roleId: undefined,
         roleCode: undefined,
         roleName: undefined,
         description: undefined,
-        locked: 0
+        locked: 2
       },
       dialogFormVisible: false,
       dialogStatus: '',
@@ -165,7 +165,7 @@ export default {
         roleCode: undefined,
         roleName: undefined,
         description: undefined,
-        locked: 0
+        locked: 2
       }
     },
     handleCreate() {

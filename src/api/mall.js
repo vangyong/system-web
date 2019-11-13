@@ -142,7 +142,7 @@ export function fetchSellerAccountList(query) {
   })
 }
 
-export function fetchSaleAccount(id) {
+export function fetchSellerAccount(id) {
   return request({
     url: '/v1/mall/seller/account/',
     method: 'get',
@@ -150,7 +150,7 @@ export function fetchSaleAccount(id) {
   })
 }
 
-export function updateSaleAccount(data) {
+export function updateSellerAccount(data) {
   return request({
     url: '/v1/mall/seller/account',
     method: 'put',
@@ -160,23 +160,23 @@ export function updateSaleAccount(data) {
 
 export function fetchSellerOrderList(query) {
   return request({
-    url: '/v1/mall/seller/order/page',
+    url: '/v1/mall/order/seller/page',
     method: 'get',
     params: query
   })
 }
 
-export function fetchSaleOrder(id) {
-  return request({
-    url: '/v1/mall/seller/order/',
-    method: 'get',
-    params: { id }
-  })
-}
+// export function fetchSellerOrder(id) {
+//   return request({
+//     url: '/v1/mall/order/',
+//     method: 'get',
+//     params: { id }
+//   })
+// }
 
-export function updateSaleOrder(data) {
+export function updateSellerOrder(data) {
   return request({
-    url: '/v1/mall/seller/order',
+    url: '/v1/mall/order',
     method: 'put',
     data
   })
@@ -198,7 +198,7 @@ export function fetchBuyerAccount(id) {
   })
 }
 
-export function updateBuyAccount(data) {
+export function updateBuyerAccount(data) {
   return request({
     url: '/v1/mall/buyer/account',
     method: 'put',

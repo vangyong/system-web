@@ -90,8 +90,8 @@ export default {
   filters: {
     hideFilter(status) {
       const hideMap = {
-        0: '不隐藏',
-        1: '隐藏'
+        1: '隐藏',
+        2: '显示'
       }
       return hideMap[status]
     }
@@ -109,14 +109,14 @@ export default {
         sort: undefined
       },
       hideOptions: [
-        { key: 0, display_name: this.$t('resource.hide_0') },
-        { key: 1, display_name: this.$t('resource.hide_1') }],
+        { key: 1, display_name: this.$t('resource.hide_1') },
+        { key: 2, display_name: this.$t('resource.hide_2') }],
       temp: {
         resourceId: undefined,
         resourceCode: undefined,
         resourceName: undefined,
         description: undefined,
-        locked: 0
+        locked: 2
       },
       dialogFormVisible: false,
       dialogStatus: '',
@@ -170,7 +170,7 @@ export default {
         resourceCode: undefined,
         resourceName: undefined,
         description: undefined,
-        locked: 0
+        locked: 2
       }
     },
     handleCreate() {

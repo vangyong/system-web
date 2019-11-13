@@ -96,7 +96,7 @@ import { parseTime } from '@/utils'
 import { formatDate } from '@/utils/date'
 
 const statusOptions = [
-  { key: 0, display_name: '弃用' },
+  { key: 2, display_name: '弃用' },
   { key: 1, display_name: '使用' }
 ]
 

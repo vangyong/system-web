@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { fetchBuyerAccountList, updateBuyAccount } from '@/api/mall'
+import { fetchBuyerAccountList, updateBuyerAccount } from '@/api/mall'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 
@@ -194,7 +194,7 @@ export default {
         if (valid) {
           const tempData = Object.assign({}, this.temp)
           tempData.timestamp = +new Date(tempData.timestamp)
-          updateBuyAccount(tempData).then(() => {
+          updateBuyerAccount(tempData).then(() => {
             for (const v of this.list) {
               if (v.id === this.temp.id) {
                 const index = this.list.indexOf(v)

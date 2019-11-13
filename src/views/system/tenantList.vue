@@ -105,7 +105,7 @@ export default {
     },
     statusFilter(status) {
       const statusMap = {
-        1: '注册待审核',
+        1: '待审核',
         2: '审核未通过',
         3: '正常经营',
         4: '暂停经营',
@@ -197,8 +197,8 @@ export default {
         tenantId: undefined,
         tenantName: undefined,
         mobileNumber: undefined,
-        status: 0,
-        deleteStatus: 0
+        status: 2,
+        deleteStatus: 2
       }
     },
     handleCreate() {
