@@ -60,10 +60,10 @@
     <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
       <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="120px" style="width: 400px; margin-left:50px;">
         <el-form-item :label="$t('goods.goodsName')" prop="goodsName">
-          <el-input :placeholder="$t('goods.goodsName')" v-model="temp.goodsName" readonly="true" style="width: 200px;" class="filter-item"/>
+          <el-input :placeholder="$t('goods.goodsName')" v-model="temp.goodsName" readonly="readonly" style="width: 200px;" class="filter-item"/>
         </el-form-item>
         <el-form-item :label="$t('goods.goodsCode')" prop="goodsCode">
-          <el-input :placeholder="$t('goods.goodsCode')" v-model="temp.goodsCode" readonly="true" style="width: 200px;" class="filter-item"/>
+          <el-input :placeholder="$t('goods.goodsCode')" v-model="temp.goodsCode" readonly="readonly" style="width: 200px;" class="filter-item"/>
         </el-form-item>
         <el-form-item :label="$t('goods.status')" prop="status">
           <el-select :placeholder="$t('goods.status')" v-model="temp.status" class="filter-item" >
@@ -76,9 +76,38 @@
           </el-select>
         </el-form-item>
         <el-form-item :label="$t('goods.brief')" prop="brief">
-          <el-input :placeholder="$t('goods.brief')" v-model="temp.brief" readonly="true" style="width: 200px;" class="filter-item"/>
+          <el-input :placeholder="$t('goods.brief')" v-model="temp.brief" readonly="readonly" style="width: 200px;" class="filter-item"/>
         </el-form-item>
       </el-form>
+      <el-form>
+        <div :label="$t('tenant.certificate')">
+          <el-col :span="12">
+            <div>
+              <div><span>主图</span></div>
+              <el-image :src="primaryPictureUrl" :preview-src-list="[primaryPictureUrl]" style="height: 100px;width: 100px"/>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <div>
+              <div><span>列表图</span></div>
+              <el-image :src="listPictureUrl" :preview-src-list="[listPictureUrl]" style="height: 100px;width: 100px"/>
+            </div>
+          </el-col>
+        </div>
+
+      </el-form>
+      <el-form>
+        <div :label="$t('tenant.certificate')">
+          <div v-for="fit in gallery" :key="fit.certificateId">
+            <el-col :span="6">
+              <div>
+                <el-image :src="fit.galleryUrl" :preview-src-list="[fit.galleryUrl]" style="height: 100px;width: 100px"/>
+              </div>
+            </el-col>
+          </div>
+        </div>
+      </el-form>
+
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">{{ $t('table.cancel') }}</el-button>
         <el-button v-if="dialogStatus=='create'" type="primary" @click="createData">{{ $t('table.confirm') }}</el-button>
@@ -91,10 +120,11 @@
 </template>
 
 <script>
-import { fetchGoodsPage, createGoods, updateGoods, examineGoods, deleteGoods } from '@/api/mall'
+import { fetchGoodsPage, createGoods, updateGoods, examineGoods, deleteGoods, fetchGoodsDetail } from '@/api/mall'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 import { formatDate } from '@/utils/date'
+import { fileDownload } from '@/utils/global'
 
 const statusOptions = [
   { key: 1, display_name: '待审核' },
@@ -164,6 +194,11 @@ export default {
         brief: undefined,
         deleteStatus: 0
       },
+      primaryPictureUrl: '',
+      listPictureUrl: '',
+      gallery: [],
+      attribute: [],
+      specification: [],
       dialogFormVisible: false,
       dialogStatus: '',
       textMap: {
@@ -275,10 +310,28 @@ export default {
     handleExamine(row) {
       this.temp = Object.assign({}, row)
       this.temp.timestamp = new Date(this.temp.timestamp)
+      this.getGoodsDetail(row.goodsId)
       this.dialogStatus = 'examine'
       this.dialogFormVisible = true
       this.$nextTick(() => {
         this.$refs['dataForm'].clearValidate()
+      })
+    },
+    getGoodsDetail(goodsId) {
+      fetchGoodsDetail(goodsId).then((res) => {
+        if (res.data) {
+          this.attribute = res.data.attribute
+          this.specification = res.data.specification
+          this.primaryPictureUrl = fileDownload + '/' + res.data.goods.primaryPictureUrl
+          this.listPictureUrl = fileDownload + '/' + res.data.goods.listPictureUrl
+          if (res.data.gallery) {
+            for (const v of res.data.gallery) {
+              v.galleryUrl = fileDownload + '/' + v.fileId
+            }
+            this.gallery = res.data.gallery
+          }
+          console.log(this.gallery)
+        }
       })
     },
     examineData() {

@@ -79,7 +79,7 @@
             <el-col :span="6">
               <div>
                 <div><span>{{ fit.certificateName }}</span></div>
-                <el-image :src="fit.certificateUrl" style="height: 100px;width: 100px"/>
+                <el-image :src="fit.certificateUrl" :preview-src-list="[fit.certificateUrl]" style="height: 100px;width: 100px"/>
               </div>
             </el-col>
           </div>
