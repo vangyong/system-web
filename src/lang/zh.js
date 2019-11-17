@@ -226,6 +226,7 @@ export default {
     tenantName: '租户名称',
     tenantCode: '租户编码',
     status: '状态',
+    certificate: '证件',
     status_1: '注册待审核',
     status_2: '审核未通过',
     status_3: '正常经营',

@@ -226,6 +226,7 @@ export default {
     tenantName: 'Tenant Name',
     tenantCode: 'Tenant Code',
     status: 'Status',
+    certificate: 'Certificate',
     status_1: 'Pending Review',
     status_2: 'No Pass',
     status_3: 'Normal Operation',

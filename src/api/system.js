@@ -167,3 +167,10 @@ export function deleteTenant(tenantId) {
     tenantId
   })
 }
+
+export function fetchCertificateByTenant(tenantId) {
+  return request({
+    url: '/v1/system/certificate/business/' + tenantId,
+    method: 'get'
+  })
+}

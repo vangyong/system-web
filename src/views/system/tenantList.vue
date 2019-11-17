@@ -11,6 +11,13 @@
       <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">{{ $t('table.export') }}</el-button>
     </div>
 
+    <div style="width: 100px; height: 100px" >
+      <div v-for="fit in fits" :key="fit" class="block">
+        <!--<span class="demonstration">{{ fit }}</span>-->
+        <el-image :src="url" :fit="fit" style="width: 100px; height: 100px" />
+      </div>
+    </div>
+
     <el-table v-loading="listLoading" :key="tableKey" :data="list" border fit highlight-current-row style="width: 100%;">
       <el-table-column :label="$t('tenant.tenantCode')" width="200" align="center">
         <template slot-scope="scope">
@@ -24,7 +31,7 @@
       </el-table-column>
       <el-table-column :label="$t('tenant.status')" class-name="status-col" width="100">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.status">{{ scope.row.status| statusFilter }}</el-tag>
+          <el-tag>{{ scope.row.status| statusFilter }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column :label="$t('tenant.mobileNumber')" width="200" align="center">
@@ -39,7 +46,7 @@
       </el-table-column>
       <el-table-column :label="$t('tenant.deleteStatus')" class-name="status-col" width="100">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.deleteStatus ">{{ scope.row.deleteStatus | deleteStatusFilter }}</el-tag>
+          <el-tag>{{ scope.row.deleteStatus | deleteStatusFilter }}</el-tag>
         </template>
       </el-table-column>
 
@@ -72,6 +79,21 @@
             <el-option v-for="item in deleteStatusOptions" :key="item.key" :label="item.display_name" :value="item.key"/>
           </el-select>
         </el-form-item>
+
+        <div :label="$t('tenant.certificate')" style="width: 200px;height: 200px">
+          <!--<el-table :data="temp.certificates" style="width: 100%">-->
+          <!--<el-table-column prop="certificateId" label="证件id" width="120"/>-->
+          <!--<el-table-column prop="certificateName" label="证件类型" width="120"/>-->
+          <!--<el-table-column prop="certificateUrl" label="预览" width="120"/>-->
+          <!--</el-table>-->
+
+          <div v-for="fit in certificates" :key="fit.certificateId" style="width: 200px;height: 200px">
+            <!--<span class="demonstration">{{ fit.certificateName }}</span>-->
+            <el-image :src="url" style="height: 100px;width: 100px"/>
+          </div>
+
+        </div>
+
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">{{ $t('table.cancel') }}</el-button>
@@ -85,10 +107,11 @@
 </template>
 
 <script>
-import { fetchTenantList, createTenant, updateTenant, examineTenant, deleteTenant } from '@/api/system'
+import { fetchTenantList, createTenant, updateTenant, examineTenant, deleteTenant, fetchCertificateByTenant } from '@/api/system'
 import waves from '@/directive/waves' // 水波纹指令
 import { parseTime } from '@/utils'
 import { formatDate } from '@/utils/date'
+import { fileDownload } from '@/utils/global'
 
 export default {
   name: 'TenantList',
@@ -129,7 +152,7 @@ export default {
         page: 1,
         limit: 20,
         tenantName: undefined,
-        gender: undefined,
+        status: undefined,
         mobileNumber: undefined,
         sort: undefined
       },
@@ -148,8 +171,15 @@ export default {
       temp: {
         tenantId: undefined,
         tenantName: undefined,
-        deletStatus: 2
+        deleteStatus: 2,
+        certificates: []
       },
+      certificates: [{
+        certificateName: '身份证正面',
+        certificateUrl: 'http://127.0.0.1:8000/v1/filecenter/download/1195681697258147840'
+      }],
+      fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
+      url: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
       dialogFormVisible: false,
       dialogStatus: '',
       textMap: {
@@ -263,10 +293,24 @@ export default {
     handleExamine(row) {
       this.temp = Object.assign({}, row)
       this.temp.timestamp = new Date(this.temp.timestamp)
+      this.getCertificateList(row.tenantId)
       this.dialogStatus = 'examine'
       this.dialogFormVisible = true
       this.$nextTick(() => {
         this.$refs['dataForm'].clearValidate()
+      })
+    },
+    getCertificateList(tenantId) {
+      fetchCertificateByTenant(tenantId).then((res) => {
+        if (res.data) {
+          const certificateList = []
+          for (const v of res.data) {
+            v.certificateUrl = fileDownload + '/' + v.certificateUrl
+            certificateList.push(v)
+          }
+          this.temp.certificates = res.data
+          console.log(this.temp.certificates)
+        }
       })
     },
     examineData() {
@@ -334,3 +378,17 @@ export default {
   }
 }
 </script>
+
+<style rel="stylesheet/scss" lang="scss">
+  .block {
+    padding: 30px 0;
+    text-align: center;
+    border-right: 1px solid #eff2f6;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+    vertical-align: top;
+  }
+
+</style>
