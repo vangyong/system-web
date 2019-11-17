@@ -363,17 +363,3 @@ export default {
   }
 }
 </script>
-
-<style rel="stylesheet/scss" lang="scss">
-  .block {
-    padding: 30px 0;
-    text-align: center;
-    border-right: 1px solid #eff2f6;
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    box-sizing: border-box;
-    vertical-align: top;
-  }
-
-</style>
