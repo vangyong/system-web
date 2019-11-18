@@ -266,6 +266,9 @@ export default {
     status_4: 'Obtained',
     status_5: 'Sold Out',
     brief: 'Brief',
+    primaryPicture: 'Primary Picture',
+    listPicture: 'List Picture',
+    gallerty: 'Gallerty',
     createTime: 'Create Time',
     deleteStatus: 'Delete Status',
     examine: 'Examine'

@@ -80,31 +80,30 @@
         </el-form-item>
       </el-form>
       <el-form>
-        <div :label="$t('tenant.certificate')">
-          <el-col :span="12">
+        <div :label="$t('goods.primaryPicture')">
+          <el-col :span="4">
             <div>
               <div><span>主图</span></div>
               <el-image :src="primaryPictureUrl" :preview-src-list="[primaryPictureUrl]" style="height: 100px;width: 100px"/>
             </div>
           </el-col>
-          <el-col :span="12">
+          <el-col :span="4">
             <div>
               <div><span>列表图</span></div>
               <el-image :src="listPictureUrl" :preview-src-list="[listPictureUrl]" style="height: 100px;width: 100px"/>
             </div>
           </el-col>
-        </div>
 
-      </el-form>
-      <el-form>
-        <div :label="$t('tenant.certificate')">
-          <div v-for="fit in gallery" :key="fit.certificateId">
-            <el-col :span="6">
-              <div>
-                <el-image :src="fit.galleryUrl" :preview-src-list="[fit.galleryUrl]" style="height: 100px;width: 100px"/>
-              </div>
-            </el-col>
-          </div>
+          <el-col :span="16">
+            <div><span>画廊(轮播图)</span></div>
+            <div v-for="fit in gallery" :key="fit.fileId">
+              <el-col :span="4">
+                <div>
+                  <el-image :src="fit.galleryUrl" :preview-src-list="[fit.galleryUrl]" style="height: 100px;width: 100px"/>
+                </div>
+              </el-col>
+            </div>
+          </el-col>
         </div>
       </el-form>
 
@@ -330,7 +329,6 @@ export default {
             }
             this.gallery = res.data.gallery
           }
-          console.log(this.gallery)
         }
       })
     },

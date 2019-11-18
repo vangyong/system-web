@@ -266,6 +266,9 @@ export default {
     status_4: '下架',
     status_5: '卖光',
     brief: '摘要',
+    primaryPicture: '主图',
+    listPicture: '列表图',
+    gallerty: '画廊(轮播图)',
     createTime: '创建时间',
     deleteStatus: '删除状态',
     examine: '审核'
