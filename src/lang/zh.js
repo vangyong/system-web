@@ -269,6 +269,8 @@ export default {
     primaryPicture: '主图',
     listPicture: '列表图',
     gallerty: '画廊(轮播图)',
+    attribute: '属性',
+    specification: '规格',
     createTime: '创建时间',
     deleteStatus: '删除状态',
     examine: '审核'

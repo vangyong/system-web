@@ -269,6 +269,8 @@ export default {
     primaryPicture: 'Primary Picture',
     listPicture: 'List Picture',
     gallerty: 'Gallerty',
+    attribute: 'Attribute',
+    specification: 'Specification',
     createTime: 'Create Time',
     deleteStatus: 'Delete Status',
     examine: 'Examine'

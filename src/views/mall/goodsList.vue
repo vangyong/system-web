@@ -80,7 +80,7 @@
         </el-form-item>
       </el-form>
       <el-form>
-        <div :label="$t('goods.primaryPicture')">
+        <div style="height:100px">
           <el-col :span="4">
             <div>
               <div><span>主图</span></div>
@@ -105,6 +105,30 @@
             </div>
           </el-col>
         </div>
+      </el-form>
+      <el-form>
+        <div style="height:300px">
+          <el-col :span="8">
+            <div>
+              <div><span>属性</span></div>
+              <el-table :data="attribute" style="width: 100%">
+                <el-table-column type="index" width="20px"/>
+                <el-table-column prop="attributeValue" label="属性" width="60px"/>
+              </el-table>
+            </div>
+          </el-col>
+          <el-col :span="8">
+            <div>
+              <div><span>规格</span></div>
+              <el-table :data="specification" style="width: 100%;">
+                <el-table-column type="index" width="20px"/>
+                <el-table-column prop="specificationName" label="规格" width="80px"/>
+                <el-table-column prop="specificationValue" label="规格值" width="80px"/>
+              </el-table>
+            </div>
+          </el-col>
+        </div>
+
       </el-form>
 
       <div slot="footer" class="dialog-footer">
@@ -328,6 +352,12 @@ export default {
               v.galleryUrl = fileDownload + '/' + v.fileId
             }
             this.gallery = res.data.gallery
+          }
+          if (res.data.attribute) {
+            this.attribute = res.data.attribute
+          }
+          if (res.data.specification) {
+            this.specification = res.data.specification
           }
         }
       })
