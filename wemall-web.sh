@@ -36,8 +36,4 @@ rm -rf $pkg_name
 # Execute rpmbuild
 cp -f $source_path/$project_name.spec $spec_path
 
-# sed -i "s/__MAJOR__/$major_version/" $specpath
-# sed -i "s/__MINOR__/$minor_version/" $specpath
-# sed -i "s/__BUILD__/$build_version/" $specpath
-
-rpmbuild -bb $specpath
+rpmbuild -bb $spec_path
