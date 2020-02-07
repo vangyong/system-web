@@ -7,7 +7,7 @@ build_version=0
 project_name=system-web
 pkg_name=$project_name-$major_version.$minor_version.$build_version
 
-source_path=/documents/codes/$project_name
+source_path=$(pwd)
 spec_path=/root/rpmbuild/SPECS/$project_name.spec
 
 
