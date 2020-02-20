@@ -1,6 +1,6 @@
 ## 简介
 
-[system-web] 是一个后台管理系统集成解决方案，它基于 [vue](https://github.com/vuejs/vue) 和 [element](https://github.com/ElemeFE/element)。内置了 i18 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以快速搭建企业级中后台产品原型。
+[system-web] 是一个后台管理系统集成解决方案，它基于 vue和element,内置了i18国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，它可以快速搭建企业级中后台产品原型。
 
 
 **本项目的定位是后台集成方案，不适合当基础模板来开发。**
@@ -9,24 +9,13 @@
 - 桌面端: [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
 - Typescript版: [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) 
 
-**注意：该项目使用 node@10.9.0版本 不要高于node@11, element-ui@2.3.0+ 版本，所以最低兼容 vue@2.5.0+**
+**注意：
+** 使用node@10.9.0版本 不要高于node@11, element-ui@2.3.0+ 版本，所以最低兼容 vue@2.5.0+**
+** webpack4
+** 不支持低版本浏览器(如 ie)，有需求请自行添加 polyfill
 
-**从`v3.8.0`开始使用`webpack4`
-**该项目不支持低版本浏览器(如 ie)，有需求请自行添加 polyfill
-
-## 前序准备
-
-你需要在本地安装 [node](http://nodejs.org/) 和 [git](https://git-scm.com/)。
-本项目技术栈基于 [ES2015+](http://es6.ruanyifeng.com/)、
-[vue](https://cn.vuejs.org/index.html)、
-[vuex](https://vuex.vuejs.org/zh-cn/)、
-[vue-router](https://router.vuejs.org/zh-cn/) 、
-[axios](https://github.com/axios/axios) 、
-[element-ui](https://github.com/ElemeFE/element)，
-所有的请求数据都使用[Mock.js](https://github.com/nuysoft/Mock)模拟。
-Refer to https://github.com/PanJiaChen/vue-element-admin.git
-
-**如有问题请先看上述使用文档和文章，若不能满足，欢迎 issue 和 pr**
+## 技术栈基于:
+vue,vuex,vue-router,axios,element-ui,Mock.js
 
 ## 功能
 
@@ -91,10 +80,6 @@ Refer to https://github.com/PanJiaChen/vue-element-admin.git
 
 ## 开发
 
-```bash
-# 克隆项目
-git clone https://github.com/vangyong/system-web.git
-
 # 安装依赖
 npm install
 
@@ -103,23 +88,19 @@ npm install --registry=https://registry.npm.taobao.org
 
 # 启动服务
 npm run dev
-```
 
 浏览器访问 http://localhost:11001
 
 ## 发布
 
-```bash
 # 构建测试环境
 npm run build:sit
 
 # 构建生产环境
 npm run build:prod
-```
 
 ## 其它
 
-```bash
 # --report to build with bundle size analytics
 npm run build:prod
 
@@ -134,9 +115,11 @@ npm run lint
 
 # auto fix
 npm run lint -- --fix
-```
 
-Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/guide/essentials/deploy.html) for more information
+## 参照：
+# 参照源码 https://github.com/PanJiaChen/vue-element-admin.git
+# 说明文档 https://panjiachen.github.io/vue-element-admin-site/guide/essentials/deploy.html
+
 
 ## License
 [MIT]
