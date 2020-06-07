@@ -6,17 +6,6 @@ const Base64 = require('js-base64').Base64
 const jwt = require('jsonwebtoken')
 
 export function loginByUsername(username, password) {
-  // const data = {
-  //   username,
-  //   password
-  // }
-
-  // return request({
-  //   url: '/login/login',
-  //   method: 'post',
-  //   data
-  // })
-
   const user = {
     'username': username,
     'password': password
@@ -41,20 +30,14 @@ export function logout() {
 }
 
 export function getUserInfo(token) {
-  const decoded_comlete = jwt.decode(token, { complete: true })
-  const user_name = decoded_comlete.payload.user_name
-  // return request({
-  //   url: '/user/info',
-  //   method: 'get',
-  //   params: { user_name }
-  // })
+  const decodedComlete = jwt.decode(token, { complete: true })
+  const username = decodedComlete.payload.user_name
   return request({
-    url: '/v1/sso-server/user/name/' + user_name,
+    url: '/v1/sso-server/user/name/' + username,
     method: 'get',
     headers: {
       'Authorization': 'bearer ' + token
-    }/*,
-    params: { user_name }*/
+    }
   })
 }
 
